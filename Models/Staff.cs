@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CareHome.Models
@@ -13,19 +14,28 @@ namespace CareHome.Models
         public string MiddleNames { get; set; }
         public string LastName { get; set; }
 
+        [ForeignKey("CareHomesId")]
+
+        public CareHomes? SiteLocation { get; set; }
+
         [ForeignKey("GenderTypesId")]
-        public ICollection<GenderTypes> Gender { get; set; }
+
+        public ICollection<GenderTypes>? Gender { get; set; }
 
         [ForeignKey("AddressDetailsId")]
-        public AddressDetails Address { get; set; }
+
+        public AddressDetails? Address { get; set; }
 
         [ForeignKey("EthnicityGroupsId")]
-        public ICollection<EthnicityGroups> Ethnicity { get; set; }
 
-        public DateOnly DOB { get; set; }
+        public ICollection<EthnicityGroups>? Ethnicity { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
 
         [ForeignKey("JobTitlesId")]
-        public JobTitles JobTitle { get; set; }
+
+        public JobTitles? JobTitle { get; set; }
 
         public decimal Salary { get; set; }
     }

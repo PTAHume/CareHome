@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using CareHome.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<CareHomeContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CareHomeContext") ?? throw new InvalidOperationException("Connection string 'CareHomeContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

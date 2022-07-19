@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CareHome.Models
@@ -15,7 +16,8 @@ namespace CareHome.Models
         public decimal DefaultSalery { get; set; }
 
         [ForeignKey("DepartmentId")]
-        public ICollection<Departments> Department { get; set; }
+
+        public ICollection<Departments>? Department { get; set; }
     }
 
     public class Departments

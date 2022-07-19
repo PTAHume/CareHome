@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CareHome.Models
 {
@@ -12,8 +14,13 @@ namespace CareHome.Models
         public string ContactName { get; set; }
 
         public string ContactNumber { get; set; }
-        public AddressDetails Address { get; set; }
 
-        public ContactDetails ContactInfo { get; set; }
+        [ForeignKey("AddressDetailsId")]
+
+        public AddressDetails? Address { get; set; }
+
+        [ForeignKey("ContactDetailsId")]
+
+        public ContactDetails? ContactInfo { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CareHome.Models
@@ -11,7 +12,8 @@ namespace CareHome.Models
         public string GroupName { get; set; }
 
         [ForeignKey("EthnicityTypesId")]
-        public List<EthnicityTypes> EthnicityClasses { get; set; }
+
+        public List<EthnicityTypes>? EthnicityClasses { get; set; }
     }
 
     public class EthnicityTypes
