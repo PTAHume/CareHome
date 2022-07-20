@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,21 +6,23 @@ namespace CareHome.Models
 {
     public class CareHomes
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CareHomesId { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
-        public string ContactName { get; set; }
-
+        [Required]
         public string ContactNumber { get; set; }
 
-        [ForeignKey("AddressDetailsId")]
+        public int? AddressDetailsId { get; set; }
 
-        public AddressDetails? Address { get; set; }
+        public AddressDetails AddressDetails { get; set; }
 
-        [ForeignKey("ContactDetailsId")]
+        public int? ContactDetailsId { get; set; }
 
-        public ContactDetails? ContactInfo { get; set; }
+        public ContactDetails ContactInfo { get; set; }
+
+        public ICollection<Staff> StaffMembers { get; set; }
     }
 }

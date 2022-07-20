@@ -22,9 +22,8 @@ namespace CareHome.Controllers
         // GET: Staffs
         public async Task<IActionResult> Index()
         {
-              return _context.Staff != null ? 
-                          View(await _context.Staff.ToListAsync()) :
-                          Problem("Entity set 'CareHomeContext.Staff'  is null.");
+            var careHomeContext = _context.Staff.Include(s => s.AddressDetails).Include(s => s.ContactInfo).Include(s => s.Department).Include(s => s.Ethnicity).Include(s => s.Gender).Include(s => s.JobTitle);
+            return View(await careHomeContext.ToListAsync());
         }
 
         // GET: Staffs/Details/5
@@ -36,6 +35,12 @@ namespace CareHome.Controllers
             }
 
             var staff = await _context.Staff
+                .Include(s => s.AddressDetails)
+                .Include(s => s.ContactInfo)
+                .Include(s => s.Department)
+                .Include(s => s.Ethnicity)
+                .Include(s => s.Gender)
+                .Include(s => s.JobTitle)
                 .FirstOrDefaultAsync(m => m.StaffId == id);
             if (staff == null)
             {
@@ -48,6 +53,12 @@ namespace CareHome.Controllers
         // GET: Staffs/Create
         public IActionResult Create()
         {
+            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName");
+            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName");
+            ViewData["DepartmentId"] = new SelectList(_context.Set<Departments>(), "DepartmentId", "Description");
+            ViewData["EthnicityGroupsId"] = new SelectList(_context.Set<EthnicityGroups>(), "EthnicityGroupsId", "GroupName");
+            ViewData["GenderTypesId"] = new SelectList(_context.Set<GenderTypes>(), "GenderTypesId", "Gender");
+            ViewData["JobTitlesId"] = new SelectList(_context.Set<JobTitles>(), "JobTitlesId", "Description");
             return View();
         }
 
@@ -56,7 +67,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StaffId,Forename,MiddleNames,LastName,DOB,Salary")] Staff staff)
+        public async Task<IActionResult> Create([Bind("StaffId,Forename,MiddleNames,LastName,GenderTypesId,AddressDetailsId,ContactDetailsId,EthnicityGroupsId,DOB,DepartmentId,JobTitlesId,Salary")] Staff staff)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +75,12 @@ namespace CareHome.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName", staff.AddressDetailsId);
+            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName", staff.ContactDetailsId);
+            ViewData["DepartmentId"] = new SelectList(_context.Set<Departments>(), "DepartmentId", "Description", staff.DepartmentId);
+            ViewData["EthnicityGroupsId"] = new SelectList(_context.Set<EthnicityGroups>(), "EthnicityGroupsId", "GroupName", staff.EthnicityGroupsId);
+            ViewData["GenderTypesId"] = new SelectList(_context.Set<GenderTypes>(), "GenderTypesId", "Gender", staff.GenderTypesId);
+            ViewData["JobTitlesId"] = new SelectList(_context.Set<JobTitles>(), "JobTitlesId", "Description", staff.JobTitlesId);
             return View(staff);
         }
 
@@ -80,6 +97,12 @@ namespace CareHome.Controllers
             {
                 return NotFound();
             }
+            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName", staff.AddressDetailsId);
+            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName", staff.ContactDetailsId);
+            ViewData["DepartmentId"] = new SelectList(_context.Set<Departments>(), "DepartmentId", "Description", staff.DepartmentId);
+            ViewData["EthnicityGroupsId"] = new SelectList(_context.Set<EthnicityGroups>(), "EthnicityGroupsId", "GroupName", staff.EthnicityGroupsId);
+            ViewData["GenderTypesId"] = new SelectList(_context.Set<GenderTypes>(), "GenderTypesId", "Gender", staff.GenderTypesId);
+            ViewData["JobTitlesId"] = new SelectList(_context.Set<JobTitles>(), "JobTitlesId", "Description", staff.JobTitlesId);
             return View(staff);
         }
 
@@ -88,7 +111,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StaffId,Forename,MiddleNames,LastName,DOB,Salary")] Staff staff)
+        public async Task<IActionResult> Edit(int id, [Bind("StaffId,Forename,MiddleNames,LastName,GenderTypesId,AddressDetailsId,ContactDetailsId,EthnicityGroupsId,DOB,DepartmentId,JobTitlesId,Salary")] Staff staff)
         {
             if (id != staff.StaffId)
             {
@@ -115,6 +138,12 @@ namespace CareHome.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName", staff.AddressDetailsId);
+            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName", staff.ContactDetailsId);
+            ViewData["DepartmentId"] = new SelectList(_context.Set<Departments>(), "DepartmentId", "Description", staff.DepartmentId);
+            ViewData["EthnicityGroupsId"] = new SelectList(_context.Set<EthnicityGroups>(), "EthnicityGroupsId", "GroupName", staff.EthnicityGroupsId);
+            ViewData["GenderTypesId"] = new SelectList(_context.Set<GenderTypes>(), "GenderTypesId", "Gender", staff.GenderTypesId);
+            ViewData["JobTitlesId"] = new SelectList(_context.Set<JobTitles>(), "JobTitlesId", "Description", staff.JobTitlesId);
             return View(staff);
         }
 
@@ -127,6 +156,12 @@ namespace CareHome.Controllers
             }
 
             var staff = await _context.Staff
+                .Include(s => s.AddressDetails)
+                .Include(s => s.ContactInfo)
+                .Include(s => s.Department)
+                .Include(s => s.Ethnicity)
+                .Include(s => s.Gender)
+                .Include(s => s.JobTitle)
                 .FirstOrDefaultAsync(m => m.StaffId == id);
             if (staff == null)
             {

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using CareHome.Models;
 using CareHome.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CareHomeContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CareHomeContext") ?? throw new InvalidOperationException("Connection string 'CareHomeContext' not found.")));
@@ -9,6 +11,15 @@ builder.Services.AddDbContext<CareHomeContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseManagedNetworkingOnWindows", true);
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

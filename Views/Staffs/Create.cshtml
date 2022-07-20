@@ -28,9 +28,33 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="GenderTypesId" class="control-label"></label>
+                <select asp-for="GenderTypesId" class ="form-control" asp-items="ViewBag.GenderTypesId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressDetailsId" class="control-label"></label>
+                <select asp-for="AddressDetailsId" class ="form-control" asp-items="ViewBag.AddressDetailsId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactDetailsId" class="control-label"></label>
+                <select asp-for="ContactDetailsId" class ="form-control" asp-items="ViewBag.ContactDetailsId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EthnicityGroupsId" class="control-label"></label>
+                <select asp-for="EthnicityGroupsId" class ="form-control" asp-items="ViewBag.EthnicityGroupsId"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="DOB" class="control-label"></label>
                 <input asp-for="DOB" class="form-control" />
                 <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select asp-for="DepartmentId" class ="form-control" asp-items="ViewBag.DepartmentId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobTitlesId" class="control-label"></label>
+                <select asp-for="JobTitlesId" class ="form-control" asp-items="ViewBag.JobTitlesId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Salary" class="control-label"></label>

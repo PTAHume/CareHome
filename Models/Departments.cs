@@ -4,21 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CareHome.Models
 {
-    public class JobTitles
+    public class Departments
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int JobTitlesId { get; set; }
+        public int DepartmentId { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal DefaultSalary { get; set; }
+        public Staff Staff { get; set; }
 
-        public Departments Departments { get; set; }
+        public ICollection<JobTitles> JobTitles { get; set; }
     }
 }

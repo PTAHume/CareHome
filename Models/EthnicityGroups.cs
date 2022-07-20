@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,21 +6,14 @@ namespace CareHome.Models
 {
     public class EthnicityGroups
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EthnicityGroupsId { get; set; }
 
+        [Required]
         public string GroupName { get; set; }
 
-        [ForeignKey("EthnicityTypesId")]
+        public Staff Staff { get; set; }
 
-        public List<EthnicityTypes>? EthnicityClasses { get; set; }
-    }
-
-    public class EthnicityTypes
-    {
-        [Key]
-        public int EthnicityTypesId { get; set; }
-
-        public int EthnicityName { get; set; }
+        public ICollection<EthnicityTypes> EthnicityClasses { get; set; }
     }
 }

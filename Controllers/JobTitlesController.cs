@@ -56,7 +56,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("JobTitlesId,Title,Description,DefaultSalery")] JobTitles jobTitles)
+        public async Task<IActionResult> Create([Bind("JobTitlesId,Title,Description,DefaultSalary")] JobTitles jobTitles)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("JobTitlesId,Title,Description,DefaultSalery")] JobTitles jobTitles)
+        public async Task<IActionResult> Edit(int id, [Bind("JobTitlesId,Title,Description,DefaultSalary")] JobTitles jobTitles)
         {
             if (id != jobTitles.JobTitlesId)
             {

@@ -22,7 +22,25 @@
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ethnicity)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Salary)
@@ -43,7 +61,25 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Gender.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressDetails.NumberStreetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactInfo.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ethnicity.GroupName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Salary)

@@ -31,6 +31,7 @@ namespace CareHome.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AddressDetailsId"), 1L, 1);
 
                     b.Property<string>("Locality")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumberStreetName")
@@ -64,10 +65,6 @@ namespace CareHome.Migrations
                     b.Property<int?>("ContactDetailsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ContactName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ContactNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -78,9 +75,13 @@ namespace CareHome.Migrations
 
                     b.HasKey("CareHomesId");
 
-                    b.HasIndex("AddressDetailsId");
+                    b.HasIndex("AddressDetailsId")
+                        .IsUnique()
+                        .HasFilter("[AddressDetailsId] IS NOT NULL");
 
-                    b.HasIndex("ContactDetailsId");
+                    b.HasIndex("ContactDetailsId")
+                        .IsUnique()
+                        .HasFilter("[ContactDetailsId] IS NOT NULL");
 
                     b.ToTable("CareHomes");
                 });
@@ -92,6 +93,10 @@ namespace CareHome.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactDetailsId"), 1L, 1);
+
+                    b.Property<string>("ContactName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EMail")
                         .IsRequired()
@@ -117,7 +122,14 @@ namespace CareHome.Migrations
             modelBuilder.Entity("CareHome.Models.Departments", b =>
                 {
                     b.Property<int>("DepartmentId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepartmentId"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -131,7 +143,10 @@ namespace CareHome.Migrations
             modelBuilder.Entity("CareHome.Models.EthnicityGroups", b =>
                 {
                     b.Property<int>("EthnicityGroupsId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EthnicityGroupsId"), 1L, 1);
 
                     b.Property<string>("GroupName")
                         .IsRequired()
@@ -145,12 +160,21 @@ namespace CareHome.Migrations
             modelBuilder.Entity("CareHome.Models.EthnicityTypes", b =>
                 {
                     b.Property<int>("EthnicityTypesId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("EthnicityName")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EthnicityTypesId"), 1L, 1);
+
+                    b.Property<int>("EthnicityGroupsId")
                         .HasColumnType("int");
+
+                    b.Property<string>("EthnicityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EthnicityTypesId");
+
+                    b.HasIndex("EthnicityGroupsId");
 
                     b.ToTable("EthnicityTypes");
                 });
@@ -158,7 +182,10 @@ namespace CareHome.Migrations
             modelBuilder.Entity("CareHome.Models.GenderTypes", b =>
                 {
                     b.Property<int>("GenderTypesId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderTypesId"), 1L, 1);
 
                     b.Property<string>("Gender")
                         .IsRequired()
@@ -177,8 +204,11 @@ namespace CareHome.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JobTitlesId"), 1L, 1);
 
-                    b.Property<decimal>("DefaultSalery")
+                    b.Property<decimal>("DefaultSalary")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("DepartmentsDepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -189,6 +219,8 @@ namespace CareHome.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("JobTitlesId");
+
+                    b.HasIndex("DepartmentsDepartmentId");
 
                     b.ToTable("JobTitles");
                 });
@@ -204,15 +236,27 @@ namespace CareHome.Migrations
                     b.Property<int?>("AddressDetailsId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CareHomesId")
+                    b.Property<int>("CareHomesId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ContactDetailsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DOB")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EthnicityGroupsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Forename")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("GenderTypesId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("JobTitlesId")
                         .HasColumnType("int");
@@ -234,6 +278,20 @@ namespace CareHome.Migrations
 
                     b.HasIndex("CareHomesId");
 
+                    b.HasIndex("ContactDetailsId");
+
+                    b.HasIndex("DepartmentId")
+                        .IsUnique()
+                        .HasFilter("[DepartmentId] IS NOT NULL");
+
+                    b.HasIndex("EthnicityGroupsId")
+                        .IsUnique()
+                        .HasFilter("[EthnicityGroupsId] IS NOT NULL");
+
+                    b.HasIndex("GenderTypesId")
+                        .IsUnique()
+                        .HasFilter("[GenderTypesId] IS NOT NULL");
+
                     b.HasIndex("JobTitlesId");
 
                     b.ToTable("Staff");
@@ -241,91 +299,125 @@ namespace CareHome.Migrations
 
             modelBuilder.Entity("CareHome.Models.CareHomes", b =>
                 {
-                    b.HasOne("CareHome.Models.AddressDetails", "Address")
+                    b.HasOne("CareHome.Models.AddressDetails", "AddressDetails")
+                        .WithOne("CareHomes")
+                        .HasForeignKey("CareHome.Models.CareHomes", "AddressDetailsId");
+
+                    b.HasOne("CareHome.Models.ContactDetails", "ContactInfo")
+                        .WithOne("CareHomes")
+                        .HasForeignKey("CareHome.Models.CareHomes", "ContactDetailsId");
+
+                    b.Navigation("AddressDetails");
+
+                    b.Navigation("ContactInfo");
+                });
+
+            modelBuilder.Entity("CareHome.Models.EthnicityTypes", b =>
+                {
+                    b.HasOne("CareHome.Models.EthnicityGroups", "EthnicityGroups")
+                        .WithMany("EthnicityClasses")
+                        .HasForeignKey("EthnicityGroupsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EthnicityGroups");
+                });
+
+            modelBuilder.Entity("CareHome.Models.JobTitles", b =>
+                {
+                    b.HasOne("CareHome.Models.Departments", "Departments")
+                        .WithMany("JobTitles")
+                        .HasForeignKey("DepartmentsDepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Departments");
+                });
+
+            modelBuilder.Entity("CareHome.Models.Staff", b =>
+                {
+                    b.HasOne("CareHome.Models.AddressDetails", "AddressDetails")
                         .WithMany()
                         .HasForeignKey("AddressDetailsId");
+
+                    b.HasOne("CareHome.Models.CareHomes", "CareHomes")
+                        .WithMany("StaffMembers")
+                        .HasForeignKey("CareHomesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CareHome.Models.ContactDetails", "ContactInfo")
                         .WithMany()
                         .HasForeignKey("ContactDetailsId");
 
-                    b.Navigation("Address");
+                    b.HasOne("CareHome.Models.Departments", "Department")
+                        .WithOne("Staff")
+                        .HasForeignKey("CareHome.Models.Staff", "DepartmentId");
 
-                    b.Navigation("ContactInfo");
-                });
+                    b.HasOne("CareHome.Models.EthnicityGroups", "Ethnicity")
+                        .WithOne("Staff")
+                        .HasForeignKey("CareHome.Models.Staff", "EthnicityGroupsId");
 
-            modelBuilder.Entity("CareHome.Models.Departments", b =>
-                {
-                    b.HasOne("CareHome.Models.JobTitles", null)
-                        .WithMany("Department")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CareHome.Models.EthnicityGroups", b =>
-                {
-                    b.HasOne("CareHome.Models.Staff", null)
-                        .WithMany("Ethnicity")
-                        .HasForeignKey("EthnicityGroupsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CareHome.Models.EthnicityTypes", b =>
-                {
-                    b.HasOne("CareHome.Models.EthnicityGroups", null)
-                        .WithMany("EthnicityClasses")
-                        .HasForeignKey("EthnicityTypesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CareHome.Models.GenderTypes", b =>
-                {
-                    b.HasOne("CareHome.Models.Staff", null)
-                        .WithMany("Gender")
-                        .HasForeignKey("GenderTypesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CareHome.Models.Staff", b =>
-                {
-                    b.HasOne("CareHome.Models.AddressDetails", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressDetailsId");
-
-                    b.HasOne("CareHome.Models.CareHomes", "SiteLocation")
-                        .WithMany()
-                        .HasForeignKey("CareHomesId");
+                    b.HasOne("CareHome.Models.GenderTypes", "Gender")
+                        .WithOne("Staff")
+                        .HasForeignKey("CareHome.Models.Staff", "GenderTypesId");
 
                     b.HasOne("CareHome.Models.JobTitles", "JobTitle")
                         .WithMany()
                         .HasForeignKey("JobTitlesId");
 
-                    b.Navigation("Address");
+                    b.Navigation("AddressDetails");
+
+                    b.Navigation("CareHomes");
+
+                    b.Navigation("ContactInfo");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Ethnicity");
+
+                    b.Navigation("Gender");
 
                     b.Navigation("JobTitle");
+                });
 
-                    b.Navigation("SiteLocation");
+            modelBuilder.Entity("CareHome.Models.AddressDetails", b =>
+                {
+                    b.Navigation("CareHomes")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CareHome.Models.CareHomes", b =>
+                {
+                    b.Navigation("StaffMembers");
+                });
+
+            modelBuilder.Entity("CareHome.Models.ContactDetails", b =>
+                {
+                    b.Navigation("CareHomes")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CareHome.Models.Departments", b =>
+                {
+                    b.Navigation("JobTitles");
+
+                    b.Navigation("Staff")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CareHome.Models.EthnicityGroups", b =>
                 {
                     b.Navigation("EthnicityClasses");
+
+                    b.Navigation("Staff")
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("CareHome.Models.JobTitles", b =>
+            modelBuilder.Entity("CareHome.Models.GenderTypes", b =>
                 {
-                    b.Navigation("Department");
-                });
-
-            modelBuilder.Entity("CareHome.Models.Staff", b =>
-                {
-                    b.Navigation("Ethnicity");
-
-                    b.Navigation("Gender");
+                    b.Navigation("Staff")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -10,87 +10,87 @@ using CareHome.Models;
 
 namespace CareHome.Controllers
 {
-    public class DepartmentsController : Controller
+    public class AddressDetailsController : Controller
     {
         private readonly CareHomeContext _context;
 
-        public DepartmentsController(CareHomeContext context)
+        public AddressDetailsController(CareHomeContext context)
         {
             _context = context;
         }
 
-        // GET: Departments
+        // GET: AddressDetails
         public async Task<IActionResult> Index()
         {
-              return _context.Departments != null ? 
-                          View(await _context.Departments.ToListAsync()) :
-                          Problem("Entity set 'CareHomeContext.Departments'  is null.");
+              return _context.AddressDetails != null ? 
+                          View(await _context.AddressDetails.ToListAsync()) :
+                          Problem("Entity set 'CareHomeContext.AddressDetails'  is null.");
         }
 
-        // GET: Departments/Details/5
+        // GET: AddressDetails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Departments == null)
+            if (id == null || _context.AddressDetails == null)
             {
                 return NotFound();
             }
 
-            var departments = await _context.Departments
-                .FirstOrDefaultAsync(m => m.DepartmentId == id);
-            if (departments == null)
+            var addressDetails = await _context.AddressDetails
+                .FirstOrDefaultAsync(m => m.AddressDetailsId == id);
+            if (addressDetails == null)
             {
                 return NotFound();
             }
 
-            return View(departments);
+            return View(addressDetails);
         }
 
-        // GET: Departments/Create
+        // GET: AddressDetails/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Departments/Create
+        // POST: AddressDetails/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DepartmentId,Name,Description")] Departments departments)
+        public async Task<IActionResult> Create([Bind("AddressDetailsId,NumberStreetName,Locality,Town,PostCode")] AddressDetails addressDetails)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(departments);
+                _context.Add(addressDetails);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(departments);
+            return View(addressDetails);
         }
 
-        // GET: Departments/Edit/5
+        // GET: AddressDetails/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Departments == null)
+            if (id == null || _context.AddressDetails == null)
             {
                 return NotFound();
             }
 
-            var departments = await _context.Departments.FindAsync(id);
-            if (departments == null)
+            var addressDetails = await _context.AddressDetails.FindAsync(id);
+            if (addressDetails == null)
             {
                 return NotFound();
             }
-            return View(departments);
+            return View(addressDetails);
         }
 
-        // POST: Departments/Edit/5
+        // POST: AddressDetails/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DepartmentId,Name,Description")] Departments departments)
+        public async Task<IActionResult> Edit(int id, [Bind("AddressDetailsId,NumberStreetName,Locality,Town,PostCode")] AddressDetails addressDetails)
         {
-            if (id != departments.DepartmentId)
+            if (id != addressDetails.AddressDetailsId)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace CareHome.Controllers
             {
                 try
                 {
-                    _context.Update(departments);
+                    _context.Update(addressDetails);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartmentsExists(departments.DepartmentId))
+                    if (!AddressDetailsExists(addressDetails.AddressDetailsId))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace CareHome.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(departments);
+            return View(addressDetails);
         }
 
-        // GET: Departments/Delete/5
+        // GET: AddressDetails/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Departments == null)
+            if (id == null || _context.AddressDetails == null)
             {
                 return NotFound();
             }
 
-            var departments = await _context.Departments
-                .FirstOrDefaultAsync(m => m.DepartmentId == id);
-            if (departments == null)
+            var addressDetails = await _context.AddressDetails
+                .FirstOrDefaultAsync(m => m.AddressDetailsId == id);
+            if (addressDetails == null)
             {
                 return NotFound();
             }
 
-            return View(departments);
+            return View(addressDetails);
         }
 
-        // POST: Departments/Delete/5
+        // POST: AddressDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Departments == null)
+            if (_context.AddressDetails == null)
             {
-                return Problem("Entity set 'CareHomeContext.Departments'  is null.");
+                return Problem("Entity set 'CareHomeContext.AddressDetails'  is null.");
             }
-            var departments = await _context.Departments.FindAsync(id);
-            if (departments != null)
+            var addressDetails = await _context.AddressDetails.FindAsync(id);
+            if (addressDetails != null)
             {
-                _context.Departments.Remove(departments);
+                _context.AddressDetails.Remove(addressDetails);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DepartmentsExists(int id)
+        private bool AddressDetailsExists(int id)
         {
-          return (_context.Departments?.Any(e => e.DepartmentId == id)).GetValueOrDefault();
+          return (_context.AddressDetails?.Any(e => e.AddressDetailsId == id)).GetValueOrDefault();
         }
     }
 }
