@@ -8,16 +8,13 @@
                     @Html.DisplayNameFor(model => model.ContactInfo.ContactName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ContactInfo.HomeNumber)
+                    @Html.DisplayNameFor(model => model.ContactInfo.PrimaryNumber)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ContactInfo.MobileNumber)
+                    @Html.DisplayNameFor(model => model.ContactInfo.SecondaryNumber)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.ContactInfo.EMail)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ContactInfo.PostCode)
                 </th>
             </tr>
         </thead>
@@ -28,17 +25,15 @@
                     @Html.DisplayFor(model => model.ContactInfo.ContactName)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.ContactInfo.HomeNumber)
+                    @Html.DisplayFor(model => model.ContactInfo.PrimaryNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.ContactInfo.MobileNumber)
+                    @Html.DisplayFor(model => model.ContactInfo.SecondaryNumber)
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.ContactInfo.EMail)
                 </td>
-                <td>
-                    @Html.DisplayFor(model => model.ContactInfo.PostCode)
-                </td>
+
             </tr>
         </tbody>
     </table>

@@ -13,15 +13,15 @@ namespace CareHome.Models
         [Required]
         public string ContactName { get; set; }
 
-        [Display(Name = "Home No.")]
+        [Display(Name = "Primary Contact (Home No)")]
         [Column(TypeName = "VARCHAR(32)")]
         [StringLength(32, MinimumLength = 3)]
-        public string HomeNumber { get; set; }
+        public string PrimaryNumber { get; set; }
 
-        [Display(Name = "Mobile No.")]
+        [Display(Name = "Secondary Contact (Mobile No)")]
         [Column(TypeName = "VARCHAR(32)")]
         [StringLength(32, MinimumLength = 3)]
-        public string MobileNumber { get; set; }
+        public string SecondaryNumber { get; set; }
 
         [Display(Name = "E-Mail")]
         [Column(TypeName = "VARCHAR(256)")]
