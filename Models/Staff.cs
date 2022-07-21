@@ -45,6 +45,7 @@ namespace CareHome.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Date Of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-YYYY}", ApplyFormatInEditMode = true)]
         public DateTime DOB { get; set; }
 
         public int? DepartmentId { get; set; }
