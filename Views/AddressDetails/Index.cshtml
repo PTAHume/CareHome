@@ -1,48 +1,38 @@
-﻿@page
-@model CareHome.Views.AddressDetails.IndexModel
+﻿@model CareHome.Models.CareHomes
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AddressDetails[0].NumberStreetName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddressDetails[0].Locality)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddressDetails[0].Town)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddressDetails[0].PostCode)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.AddressDetails) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberStreetName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Locality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Town)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostCode)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.AddressDetailsId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.AddressDetailsId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.AddressDetailsId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="AddressDetailsTable modal">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressDetails.NumberStreetName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressDetails.Locality)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressDetails.Town)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressDetails.PostCode)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.AddressDetails.NumberStreetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.AddressDetails.Locality)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.AddressDetails.Town)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.AddressDetails.PostCode)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

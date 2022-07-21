@@ -1,0 +1,38 @@
+﻿@model CareHome.Models.CareHomes
+
+<h4>ContactInfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ContactInfo.ContactName" class="control-label"></label>
+            <input asp-for="ContactInfo.ContactName" class="form-control" />
+            <span asp-validation-for="ContactInfo.ContactName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactInfo.HomeNumber" class="control-label"></label>
+            <input asp-for="ContactInfo.HomeNumber" class="form-control" />
+            <span asp-validation-for="ContactInfo.HomeNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactInfo.MobileNumber" class="control-label"></label>
+            <input asp-for="ContactInfo.MobileNumber" class="form-control" />
+            <span asp-validation-for="ContactInfo.MobileNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactInfo.EMail" class="control-label"></label>
+            <input asp-for="ContactInfo.EMail" class="form-control" />
+            <span asp-validation-for="ContactInfo.EMail" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactInfo.PostCode" class="control-label"></label>
+            <input asp-for="ContactInfo.PostCode" class="form-control" />
+            <span asp-validation-for="ContactInfo.PostCode" class="text-danger"></span>
+        </div>
+
+
+    </div>
+</div>
+

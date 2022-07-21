@@ -12,6 +12,7 @@ namespace CareHome.Models
 
         [Required]
         [Column(TypeName = "VARCHAR(256)")]
+        [StringLength(256, MinimumLength = 3)]
         public string Name { get; set; }
 
         public int? AddressDetailsId { get; set; }

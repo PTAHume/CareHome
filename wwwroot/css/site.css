@@ -1,18 +1,31 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.DetailTable {
+    display: block;
+}
+
+
+
+
+
+.ui-dialog .ui-dialog-titlebar-close {
+    background-image: url("../lib/jqueryui/images/ui-icons_cc0000_256x240.png") !important;
+    background-position: 50% 50%;
 }

@@ -1,8 +1,6 @@
 ﻿@model CareHome.Models.CareHomes
 
-@{
-    ViewData["Title"] = "Edit";
-}
+
 
 <h1>Edit</h1>
 
@@ -19,14 +17,10 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AddressDetailsId" class="control-label"></label>
-                <select asp-for="AddressDetailsId" class="form-control" asp-items="ViewBag.AddressDetailsId"></select>
-                <span asp-validation-for="AddressDetailsId" class="text-danger"></span>
+                @await Html.PartialAsync("../AddressDetails/Edit.cshtml", Model)
             </div>
             <div class="form-group">
-                <label asp-for="ContactDetailsId" class="control-label"></label>
-                <select asp-for="ContactDetailsId" class="form-control" asp-items="ViewBag.ContactDetailsId"></select>
-                <span asp-validation-for="ContactDetailsId" class="text-danger"></span>
+                @await Html.PartialAsync("../ContactDetails/Edit.cshtml", Model)
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -40,5 +34,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

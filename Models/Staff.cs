@@ -13,13 +13,16 @@ namespace CareHome.Models
 
         [Required]
         [Column(TypeName = "VARCHAR(256)")]
+        [StringLength(256, MinimumLength = 2)]
         public string Forename { get; set; }
 
         [Column(TypeName = "VARCHAR(256)")]
+        [StringLength(256, MinimumLength = 2)]
         public string MiddleNames { get; set; }
 
         [Required]
         [Column(TypeName = "VARCHAR(256)")]
+        [StringLength(256, MinimumLength = 2)]
         public string LastName { get; set; }
 
         public CareHomes CareHomes { get; set; }
@@ -41,6 +44,7 @@ namespace CareHome.Models
         public EthnicityGroups Ethnicity { get; set; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Date Of Birth")]
         public DateTime DOB { get; set; }
 
         public int? DepartmentId { get; set; }
@@ -52,6 +56,7 @@ namespace CareHome.Models
         public JobTitles JobTitle { get; set; }
 
         [Column(TypeName = "DECIMAL(18, 2)")]
+        [DataType(DataType.Currency)]
         [Range(1, 900000)]
         public decimal Salary { get; set; }
     }

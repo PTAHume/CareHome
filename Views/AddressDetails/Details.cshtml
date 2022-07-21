@@ -1,5 +1,4 @@
-﻿@page
-@model CareHome.Views.AddressDetails.DetailsModel
+﻿@model CareHome.Models.CareHomes
 
 <div>
     <h4>AddressDetails</h4>
@@ -30,8 +29,4 @@
             @Html.DisplayFor(model => model.AddressDetails.PostCode)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.AddressDetails?.AddressDetailsId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
 </div>

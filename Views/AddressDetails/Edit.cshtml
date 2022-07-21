@@ -1,44 +1,36 @@
-﻿@page
-@model CareHome.Views.AddressDetails.EditModel
+﻿@model CareHome.Models.CareHomes
+
 
 <h4>AddressDetails</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="AddressDetails.AddressDetailsId" />
-            <div class="form-group">
-                <label asp-for="AddressDetails.NumberStreetName" class="control-label"></label>
-                <input asp-for="AddressDetails.NumberStreetName" class="form-control" />
-                <span asp-validation-for="AddressDetails.NumberStreetName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressDetails.Locality" class="control-label"></label>
-                <input asp-for="AddressDetails.Locality" class="form-control" />
-                <span asp-validation-for="AddressDetails.Locality" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressDetails.Town" class="control-label"></label>
-                <input asp-for="AddressDetails.Town" class="form-control" />
-                <span asp-validation-for="AddressDetails.Town" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressDetails.PostCode" class="control-label"></label>
-                <input asp-for="AddressDetails.PostCode" class="form-control" />
-                <span asp-validation-for="AddressDetails.PostCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="AddressDetailsId" />
+        <input type="hidden" asp-for="AddressDetails.AddressDetailsId" />
+        <div class="form-group">
+            <label asp-for="AddressDetails.NumberStreetName" class="control-label"></label>
+            <input asp-for="AddressDetails.NumberStreetName" class="form-control" />
+            <span asp-validation-for="AddressDetails.NumberStreetName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AddressDetails.Locality" class="control-label"></label>
+            <input asp-for="AddressDetails.Locality" class="form-control" />
+            <span asp-validation-for="AddressDetails.Locality" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AddressDetails.Town" class="control-label"></label>
+            <input asp-for="AddressDetails.Town" class="form-control" />
+            <span asp-validation-for="AddressDetails.Town" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AddressDetails.PostCode" class="control-label"></label>
+            <input asp-for="AddressDetails.PostCode" class="form-control" />
+            <span asp-validation-for="AddressDetails.PostCode" class="text-danger"></span>
+        </div>
+
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

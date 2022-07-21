@@ -12,10 +12,12 @@ namespace CareHome.Models
 
         [Required]
         [Column(TypeName = "VARCHAR(256)")]
+        [StringLength(256, MinimumLength = 2)]
         public string Title { get; set; }
 
         [Required]
         [Column(TypeName = "VARCHAR(MAX)")]
+        [StringLength(8000, MinimumLength = 2)]
         public string Description { get; set; }
 
         [Required]

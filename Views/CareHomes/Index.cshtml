@@ -25,23 +25,26 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddressDetails.NumberStreetName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactInfo.ContactName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CareHomesId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CareHomesId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CareHomesId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a href="javascript:void(0);" rel="modal:open" id="DisplayAddressDetail">view</a>
+                    @await Html.PartialAsync("../AddressDetails/Index.cshtml", item,ViewData)
+                </td>
+                <td>
+                    <a href="javascript:void(0);" rel="modal:open" id="DisplayContactDetails">view</a>
+                    @await Html.PartialAsync("../ContactDetails/Index.cshtml", item)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CareHomesId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CareHomesId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CareHomesId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

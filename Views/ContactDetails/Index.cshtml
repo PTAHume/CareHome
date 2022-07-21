@@ -1,0 +1,45 @@
+﻿@model CareHome.Models.CareHomes
+
+<div class="ContactInfoTable modal">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactInfo.ContactName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactInfo.HomeNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactInfo.MobileNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactInfo.EMail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactInfo.PostCode)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.ContactInfo.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ContactInfo.HomeNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ContactInfo.MobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ContactInfo.EMail)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ContactInfo.PostCode)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
