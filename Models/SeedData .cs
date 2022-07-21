@@ -10,7 +10,7 @@ namespace CareHome.Models
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using var context = new CareHomeContext(
-                serviceProvider.GetRequiredService<DbContextOptions<CareHomeContext>>());
+                 serviceProvider.GetRequiredService<DbContextOptions<CareHomeContext>>());
 
             if (context.Departments?.Any() == false)
             {

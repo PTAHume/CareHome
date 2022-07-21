@@ -32,19 +32,19 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Locality")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("NumberStreetName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("PostCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(16)");
 
                     b.Property<string>("Town")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("AddressDetailsId");
 
@@ -65,13 +65,9 @@ namespace CareHome.Migrations
                     b.Property<int?>("ContactDetailsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("CareHomesId");
 
@@ -100,19 +96,19 @@ namespace CareHome.Migrations
 
                     b.Property<string>("EMail")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("HomeNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(32)");
 
                     b.Property<string>("MobileNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(32)");
 
                     b.Property<string>("PostCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(16)");
 
                     b.HasKey("ContactDetailsId");
 
@@ -129,11 +125,11 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("DepartmentId");
 
@@ -150,7 +146,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("GroupName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("EthnicityGroupsId");
 
@@ -170,7 +166,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("EthnicityName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("EthnicityTypesId");
 
@@ -189,7 +185,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("GenderTypesId");
 
@@ -205,18 +201,18 @@ namespace CareHome.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JobTitlesId"), 1L, 1);
 
                     b.Property<decimal>("DefaultSalary")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("DECIMAL(18,2)");
 
                     b.Property<int>("DepartmentsDepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("JobTitlesId");
 
@@ -253,7 +249,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Forename")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<int?>("GenderTypesId")
                         .HasColumnType("int");
@@ -263,14 +259,14 @@ namespace CareHome.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("MiddleNames")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("DECIMAL(18,2)");
 
                     b.HasKey("StaffId");
 

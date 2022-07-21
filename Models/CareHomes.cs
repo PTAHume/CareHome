@@ -6,14 +6,13 @@ namespace CareHome.Models
 {
     public class CareHomes
     {
+        [Required]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CareHomesId { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(256)")]
         public string Name { get; set; }
-
-        [Required]
-        public string ContactNumber { get; set; }
 
         public int? AddressDetailsId { get; set; }
 

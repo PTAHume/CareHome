@@ -14,14 +14,22 @@ namespace CareHome.Data
         {
         }
 
-        public DbSet<AddressDetails> AddressDetails { get; set; }
-        public DbSet<CareHomes> CareHomes { get; set; }
-        public DbSet<ContactDetails> ContactDetails { get; set; }
-        public DbSet<Departments> Departments { get; set; }
-        public DbSet<EthnicityGroups> EthnicityGroups { get; set; }
-        public DbSet<EthnicityGroups> EthnicityTypes { get; set; }
-        public DbSet<GenderTypes> GenderTypes { get; set; }
-        public DbSet<JobTitles> JobTitles { get; set; }
-        public DbSet<Staff> Staff { get; set; }
+        public DbSet<CareHome.Models.AddressDetails>? AddressDetails { get; set; }
+
+        public DbSet<CareHome.Models.CareHomes> CareHomes { get; set; } = default!;
+
+        public DbSet<CareHome.Models.ContactDetails>? ContactDetails { get; set; }
+
+        public DbSet<CareHome.Models.Departments>? Departments { get; set; }
+
+        public DbSet<CareHome.Models.EthnicityGroups>? EthnicityGroups { get; set; }
+
+        public DbSet<CareHome.Models.EthnicityTypes>? EthnicityTypes { get; set; }
+
+        public DbSet<CareHome.Models.GenderTypes>? GenderTypes { get; set; }
+
+        public DbSet<CareHome.Models.JobTitles>? JobTitles { get; set; }
+
+        public DbSet<CareHome.Models.Staff>? Staff { get; set; }
     }
 }

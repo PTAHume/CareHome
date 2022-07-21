@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using CareHome.Models;
 using CareHome.Data;
 
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CareHomeContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CareHomeContext") ?? throw new InvalidOperationException("Connection string 'CareHomeContext' not found.")));

@@ -49,8 +49,8 @@ namespace CareHome.Controllers
         // GET: CareHomes/Create
         public IActionResult Create()
         {
-            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName");
-            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName");
+            ViewData["AddressDetailsId"] = new SelectList(_context.AddressDetails, "AddressDetailsId", "NumberStreetName");
+            ViewData["ContactDetailsId"] = new SelectList(_context.ContactDetails, "ContactDetailsId", "ContactName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CareHomesId,Name,ContactNumber,AddressDetailsId,ContactDetailsId")] CareHomes careHomes)
+        public async Task<IActionResult> Create([Bind("CareHomesId,Name,AddressDetailsId,ContactDetailsId")] CareHomes careHomes)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace CareHome.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName", careHomes.AddressDetailsId);
-            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName", careHomes.ContactDetailsId);
+            ViewData["AddressDetailsId"] = new SelectList(_context.AddressDetails, "AddressDetailsId", "NumberStreetName", careHomes.AddressDetailsId);
+            ViewData["ContactDetailsId"] = new SelectList(_context.ContactDetails, "ContactDetailsId", "ContactName", careHomes.ContactDetailsId);
             return View(careHomes);
         }
 
@@ -85,8 +85,8 @@ namespace CareHome.Controllers
             {
                 return NotFound();
             }
-            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName", careHomes.AddressDetailsId);
-            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName", careHomes.ContactDetailsId);
+            ViewData["AddressDetailsId"] = new SelectList(_context.AddressDetails, "AddressDetailsId", "NumberStreetName", careHomes.AddressDetailsId);
+            ViewData["ContactDetailsId"] = new SelectList(_context.ContactDetails, "ContactDetailsId", "ContactName", careHomes.ContactDetailsId);
             return View(careHomes);
         }
 
@@ -95,7 +95,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CareHomesId,Name,ContactNumber,AddressDetailsId,ContactDetailsId")] CareHomes careHomes)
+        public async Task<IActionResult> Edit(int id, [Bind("CareHomesId,Name,AddressDetailsId,ContactDetailsId")] CareHomes careHomes)
         {
             if (id != careHomes.CareHomesId)
             {
@@ -122,8 +122,8 @@ namespace CareHome.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AddressDetailsId"] = new SelectList(_context.Set<AddressDetails>(), "AddressDetailsId", "NumberStreetName", careHomes.AddressDetailsId);
-            ViewData["ContactDetailsId"] = new SelectList(_context.Set<ContactDetails>(), "ContactDetailsId", "ContactName", careHomes.ContactDetailsId);
+            ViewData["AddressDetailsId"] = new SelectList(_context.AddressDetails, "AddressDetailsId", "NumberStreetName", careHomes.AddressDetailsId);
+            ViewData["ContactDetailsId"] = new SelectList(_context.ContactDetails, "ContactDetailsId", "ContactName", careHomes.ContactDetailsId);
             return View(careHomes);
         }
 
@@ -161,14 +161,14 @@ namespace CareHome.Controllers
             {
                 _context.CareHomes.Remove(careHomes);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CareHomesExists(int id)
         {
-            return (_context.CareHomes?.Any(e => e.CareHomesId == id)).GetValueOrDefault();
+          return (_context.CareHomes?.Any(e => e.CareHomesId == id)).GetValueOrDefault();
         }
     }
 }

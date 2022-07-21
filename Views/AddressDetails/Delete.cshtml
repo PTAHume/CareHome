@@ -1,45 +1,40 @@
-﻿@model CareHome.Models.AddressDetails
-
-@{
-    ViewData["Title"] = "Delete";
-}
-
-<h1>Delete</h1>
+﻿@page
+@model CareHome.Views.AddressDetails.DeleteModel
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>AddressDetails</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumberStreetName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDetails.NumberStreetName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumberStreetName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDetails.NumberStreetName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Locality)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDetails.Locality)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Locality)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDetails.Locality)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Town)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDetails.Town)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Town)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDetails.Town)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostCode)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressDetails.PostCode)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostCode)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressDetails.PostCode)
         </dd>
     </dl>
     
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="AddressDetailsId" />
+    <form method="post">
+        <input type="hidden" asp-for="AddressDetails.AddressDetailsId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-page="./Index">Back to List</a>
     </form>
 </div>

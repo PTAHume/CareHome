@@ -7,16 +7,19 @@ namespace CareHome.Models
 {
     public class Staff
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StaffId { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(256)")]
         public string Forename { get; set; }
 
+        [Column(TypeName = "VARCHAR(256)")]
         public string MiddleNames { get; set; }
 
         [Required]
+        [Column(TypeName = "VARCHAR(256)")]
         public string LastName { get; set; }
 
         public CareHomes CareHomes { get; set; }
@@ -48,7 +51,8 @@ namespace CareHome.Models
 
         public JobTitles JobTitle { get; set; }
 
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column(TypeName = "DECIMAL(18, 2)")]
+        [Range(1, 900000)]
         public decimal Salary { get; set; }
     }
 }

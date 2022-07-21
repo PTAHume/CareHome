@@ -1,34 +1,29 @@
-﻿@model IEnumerable<CareHome.Models.AddressDetails>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
+﻿@page
+@model CareHome.Views.AddressDetails.IndexModel
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-page="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NumberStreetName)
+                @Html.DisplayNameFor(model => model.AddressDetails[0].NumberStreetName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Locality)
+                @Html.DisplayNameFor(model => model.AddressDetails[0].Locality)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Town)
+                @Html.DisplayNameFor(model => model.AddressDetails[0].Town)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PostCode)
+                @Html.DisplayNameFor(model => model.AddressDetails[0].PostCode)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.AddressDetails) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberStreetName)
@@ -43,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.PostCode)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AddressDetailsId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AddressDetailsId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AddressDetailsId">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.AddressDetailsId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AddressDetailsId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AddressDetailsId">Delete</a>
             </td>
         </tr>
 }
