@@ -23,7 +23,7 @@ namespace CareHome.Models
         [Column(TypeName = "VARCHAR(32)")]
         [RegularExpression(@"^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$", ErrorMessage = "Please enter valid mobile number")]
         [StringLength(32, MinimumLength = 3)]
-        public string SecondaryNumber { get; set; }
+        public string? SecondaryNumber { get; set; }
 
         [Display(Name = "E-Mail")]
         [Column(TypeName = "VARCHAR(256)")]

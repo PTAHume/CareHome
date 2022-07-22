@@ -69,12 +69,12 @@ namespace CareHome.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CareHomesId,Name,AddressDetails,ContactInfo")] CareHomes careHomes)
         {
-            //  if (ModelState.IsValid)
-            // {
-            _context.Add(careHomes);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-            //     }
+            if (ModelState.IsValid)
+            {
+                _context.Add(careHomes);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
             ViewData["AddressDetailsId"] = new SelectList(_context.AddressDetails, "AddressDetailsId", "NumberStreetName", careHomes.AddressDetailsId);
             ViewData["ContactDetailsId"] = new SelectList(_context.ContactDetails, "ContactDetailsId", "ContactName", careHomes.ContactDetailsId);
             return View(careHomes);

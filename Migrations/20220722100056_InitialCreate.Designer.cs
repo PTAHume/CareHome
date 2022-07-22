@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHome.Migrations
 {
     [DbContext(typeof(CareHomeContext))]
-    [Migration("20220721184956_InitialCreate")]
+    [Migration("20220722100056_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,6 @@ namespace CareHome.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AddressDetailsId"), 1L, 1);
 
                     b.Property<string>("Locality")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
@@ -112,7 +111,6 @@ namespace CareHome.Migrations
                         .HasColumnType("VARCHAR(32)");
 
                     b.Property<string>("SecondaryNumber")
-                        .IsRequired()
                         .HasMaxLength(32)
                         .HasColumnType("VARCHAR(32)");
 
@@ -395,8 +393,7 @@ namespace CareHome.Migrations
 
             modelBuilder.Entity("CareHome.Models.AddressDetails", b =>
                 {
-                    b.Navigation("CareHomes")
-                        .IsRequired();
+                    b.Navigation("CareHomes");
                 });
 
             modelBuilder.Entity("CareHome.Models.CareHomes", b =>
@@ -406,8 +403,7 @@ namespace CareHome.Migrations
 
             modelBuilder.Entity("CareHome.Models.ContactDetails", b =>
                 {
-                    b.Navigation("CareHomes")
-                        .IsRequired();
+                    b.Navigation("CareHomes");
                 });
 
             modelBuilder.Entity("CareHome.Models.Departments", b =>

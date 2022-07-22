@@ -16,7 +16,7 @@ namespace CareHome.Migrations
                     AddressDetailsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NumberStreetName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
-                    Locality = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    Locality = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: true),
                     Town = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     PostCode = table.Column<string>(type: "VARCHAR(16)", maxLength: 16, nullable: false)
                 },
@@ -33,7 +33,7 @@ namespace CareHome.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ContactName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PrimaryNumber = table.Column<string>(type: "VARCHAR(32)", maxLength: 32, nullable: false),
-                    SecondaryNumber = table.Column<string>(type: "VARCHAR(32)", maxLength: 32, nullable: false),
+                    SecondaryNumber = table.Column<string>(type: "VARCHAR(32)", maxLength: 32, nullable: true),
                     EMail = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false)
                 },
                 constraints: table =>
