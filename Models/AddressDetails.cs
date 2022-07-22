@@ -18,7 +18,7 @@ namespace CareHome.Models
 
         [Column(TypeName = "VARCHAR(256)")]
         [StringLength(256, MinimumLength = 3)]
-        public string Locality { get; set; }
+        public string? Locality { get; set; }
 
         [Required]
         [Column(TypeName = "VARCHAR(256)")]
@@ -28,9 +28,9 @@ namespace CareHome.Models
         [Required]
         [Column(TypeName = "VARCHAR(16)")]
         [StringLength(16, MinimumLength = 4)]
-        [RegularExpression(@"^(([A-Z]{1,2}\d[A-Z\d]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?\d[A-Z]{2}|BFPO ?\d{1,4}|(KY\d|MSR|VG|AI)[ -]?\d{4}|[A-Z]{2} ?\d{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$")]
+        [RegularExpression(@"^(([A-Z]{1,2}\d[A-Z\d]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?\d[A-Z]{2}|BFPO ?\d{1,4}|(KY\d|MSR|VG|AI)[ -]?\d{4}|[A-Z]{2} ?\d{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$", ErrorMessage = "Please enter a valid UK post code in upper case")]
         public string PostCode { get; set; }
 
-        public CareHomes CareHomes { get; set; }
+        public CareHomes? CareHomes { get; set; }
     }
 }

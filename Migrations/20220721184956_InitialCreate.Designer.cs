@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHome.Migrations
 {
     [DbContext(typeof(CareHomeContext))]
-    [Migration("20220721113120_InitialCreate")]
+    [Migration("20220721184956_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,18 +34,22 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Locality")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("NumberStreetName")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("PostCode")
                         .IsRequired()
+                        .HasMaxLength(16)
                         .HasColumnType("VARCHAR(16)");
 
                     b.Property<string>("Town")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("AddressDetailsId");
@@ -69,6 +73,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("CareHomesId");
@@ -98,19 +103,18 @@ namespace CareHome.Migrations
 
                     b.Property<string>("EMail")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
-                    b.Property<string>("HomeNumber")
+                    b.Property<string>("PrimaryNumber")
                         .IsRequired()
+                        .HasMaxLength(32)
                         .HasColumnType("VARCHAR(32)");
 
-                    b.Property<string>("MobileNumber")
+                    b.Property<string>("SecondaryNumber")
                         .IsRequired()
+                        .HasMaxLength(32)
                         .HasColumnType("VARCHAR(32)");
-
-                    b.Property<string>("PostCode")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(16)");
 
                     b.HasKey("ContactDetailsId");
 
@@ -127,10 +131,12 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasMaxLength(8000)
                         .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("DepartmentId");
@@ -148,6 +154,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("GroupName")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("EthnicityGroupsId");
@@ -168,6 +175,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("EthnicityName")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("EthnicityTypesId");
@@ -187,6 +195,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Gender")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("GenderTypesId");
@@ -210,10 +219,12 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasMaxLength(8000)
                         .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.HasKey("JobTitlesId");
@@ -251,6 +262,7 @@ namespace CareHome.Migrations
 
                     b.Property<string>("Forename")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.Property<int?>("GenderTypesId")
@@ -261,10 +273,12 @@ namespace CareHome.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("MiddleNames")
                         .IsRequired()
+                        .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
                     b.Property<decimal>("Salary")

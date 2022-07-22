@@ -16,12 +16,8 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                @await Html.PartialAsync("../AddressDetails/Edit.cshtml", Model)
-            </div>
-            <div class="form-group">
-                @await Html.PartialAsync("../ContactDetails/Edit.cshtml", Model)
-            </div>
+            @await Html.PartialAsync("../AddressDetails/Edit.cshtml", Model)
+            @await Html.PartialAsync("../ContactDetails/Edit.cshtml", Model)
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

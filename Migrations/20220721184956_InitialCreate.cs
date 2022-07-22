@@ -15,10 +15,10 @@ namespace CareHome.Migrations
                 {
                     AddressDetailsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumberStreetName = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    Locality = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    Town = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    PostCode = table.Column<string>(type: "VARCHAR(16)", nullable: false)
+                    NumberStreetName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    Locality = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    Town = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    PostCode = table.Column<string>(type: "VARCHAR(16)", maxLength: 16, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,10 +32,9 @@ namespace CareHome.Migrations
                     ContactDetailsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ContactName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HomeNumber = table.Column<string>(type: "VARCHAR(32)", nullable: false),
-                    MobileNumber = table.Column<string>(type: "VARCHAR(32)", nullable: false),
-                    EMail = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    PostCode = table.Column<string>(type: "VARCHAR(16)", nullable: false)
+                    PrimaryNumber = table.Column<string>(type: "VARCHAR(32)", maxLength: 32, nullable: false),
+                    SecondaryNumber = table.Column<string>(type: "VARCHAR(32)", maxLength: 32, nullable: false),
+                    EMail = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,8 +47,8 @@ namespace CareHome.Migrations
                 {
                     DepartmentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    Description = table.Column<string>(type: "VARCHAR(MAX)", nullable: false)
+                    Name = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    Description = table.Column<string>(type: "VARCHAR(MAX)", maxLength: 8000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,7 +61,7 @@ namespace CareHome.Migrations
                 {
                     EthnicityGroupsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupName = table.Column<string>(type: "VARCHAR(256)", nullable: false)
+                    GroupName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -75,7 +74,7 @@ namespace CareHome.Migrations
                 {
                     GenderTypesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Gender = table.Column<string>(type: "VARCHAR(256)", nullable: false)
+                    Gender = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,7 +87,7 @@ namespace CareHome.Migrations
                 {
                     CareHomesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "VARCHAR(256)", nullable: false),
+                    Name = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     AddressDetailsId = table.Column<int>(type: "int", nullable: true),
                     ContactDetailsId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -113,8 +112,8 @@ namespace CareHome.Migrations
                 {
                     JobTitlesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    Description = table.Column<string>(type: "VARCHAR(MAX)", nullable: false),
+                    Title = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    Description = table.Column<string>(type: "VARCHAR(MAX)", maxLength: 8000, nullable: false),
                     DefaultSalary = table.Column<decimal>(type: "DECIMAL(18,2)", nullable: false),
                     DepartmentsDepartmentId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -135,7 +134,7 @@ namespace CareHome.Migrations
                 {
                     EthnicityTypesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EthnicityName = table.Column<string>(type: "VARCHAR(256)", nullable: false),
+                    EthnicityName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     EthnicityGroupsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -155,9 +154,9 @@ namespace CareHome.Migrations
                 {
                     StaffId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Forename = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    MiddleNames = table.Column<string>(type: "VARCHAR(256)", nullable: false),
-                    LastName = table.Column<string>(type: "VARCHAR(256)", nullable: false),
+                    Forename = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    MiddleNames = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    LastName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     CareHomesId = table.Column<int>(type: "int", nullable: false),
                     GenderTypesId = table.Column<int>(type: "int", nullable: true),
                     AddressDetailsId = table.Column<int>(type: "int", nullable: true),

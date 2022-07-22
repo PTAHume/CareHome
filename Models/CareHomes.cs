@@ -23,6 +23,6 @@ namespace CareHome.Models
 
         public ContactDetails ContactInfo { get; set; }
 
-        public ICollection<Staff> StaffMembers { get; set; }
+        public ICollection<Staff>? StaffMembers { get; set; }
     }
 }
