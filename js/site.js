@@ -1,4 +1,24 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
+    $(".ContactInfoTable").dialog({
+        autoOpen: false,
+        width: '80%',
+        icon: "ui-icon-heart",
+        closeClass: 'icon-remove',
+    });
+    $(".AddressDetailsTable").dialog({
+        autoOpen: false,
+        resizable: true,
+        width: '80%',
+    });
 
-// Write your JavaScript code.
+    $("#DisplayContactDetails").on("click", function (e) {
+        e.preventDefault();
+        $(".AddressDetailsTable").dialog("close");
+        $(".ContactInfoTable").dialog("open");
+    });
+    $("#DisplayAddressDetail").on("click", function (e) {
+        e.preventDefault();
+        $(".AddressDetailsTable").dialog("open");
+        $(".ContactInfoTable").dialog("close");
+    });
+});
