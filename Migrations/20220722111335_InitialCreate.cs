@@ -157,7 +157,6 @@ namespace CareHome.Migrations
                     Forename = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     MiddleNames = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     LastName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
-                    CareHomesId = table.Column<int>(type: "int", nullable: false),
                     GenderTypesId = table.Column<int>(type: "int", nullable: true),
                     AddressDetailsId = table.Column<int>(type: "int", nullable: true),
                     ContactDetailsId = table.Column<int>(type: "int", nullable: true),
@@ -165,7 +164,8 @@ namespace CareHome.Migrations
                     DOB = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: true),
                     JobTitlesId = table.Column<int>(type: "int", nullable: true),
-                    Salary = table.Column<decimal>(type: "DECIMAL(18,2)", nullable: false)
+                    Salary = table.Column<decimal>(type: "DECIMAL(18,2)", nullable: false),
+                    CareHomesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -208,6 +208,30 @@ namespace CareHome.Migrations
                         principalColumn: "JobTitlesId");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Qualifications",
+                columns: table => new
+                {
+                    QualificationsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    QualificationType = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    Name = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    Grade = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    InstitutionalName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
+                    AttainmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StaffId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Qualifications", x => x.QualificationsId);
+                    table.ForeignKey(
+                        name: "FK_Qualifications_Staff_StaffId",
+                        column: x => x.StaffId,
+                        principalTable: "Staff",
+                        principalColumn: "StaffId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CareHomes_AddressDetailsId",
                 table: "CareHomes",
@@ -231,6 +255,11 @@ namespace CareHome.Migrations
                 name: "IX_JobTitles_DepartmentsDepartmentId",
                 table: "JobTitles",
                 column: "DepartmentsDepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Qualifications_StaffId",
+                table: "Qualifications",
+                column: "StaffId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Staff_AddressDetailsId",
@@ -278,6 +307,9 @@ namespace CareHome.Migrations
         {
             migrationBuilder.DropTable(
                 name: "EthnicityTypes");
+
+            migrationBuilder.DropTable(
+                name: "Qualifications");
 
             migrationBuilder.DropTable(
                 name: "Staff");

@@ -31,5 +31,7 @@ namespace CareHome.Data
         public DbSet<CareHome.Models.JobTitles>? JobTitles { get; set; }
 
         public DbSet<CareHome.Models.Staff>? Staff { get; set; }
+
+        public DbSet<CareHome.Models.Qualifications>? Qualifications { get; set; }
     }
 }

@@ -230,6 +230,47 @@ namespace CareHome.Migrations
                     b.ToTable("JobTitles");
                 });
 
+            modelBuilder.Entity("CareHome.Models.Qualifications", b =>
+                {
+                    b.Property<int>("QualificationsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QualificationsId"), 1L, 1);
+
+                    b.Property<DateTime>("AttainmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Grade")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("VARCHAR(256)");
+
+                    b.Property<string>("InstitutionalName")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("VARCHAR(256)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("VARCHAR(256)");
+
+                    b.Property<string>("QualificationType")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("VARCHAR(256)");
+
+                    b.Property<int>("StaffId")
+                        .HasColumnType("int");
+
+                    b.HasKey("QualificationsId");
+
+                    b.HasIndex("StaffId");
+
+                    b.ToTable("Qualifications");
+                });
+
             modelBuilder.Entity("CareHome.Models.Staff", b =>
                 {
                     b.Property<int>("StaffId")
@@ -342,6 +383,17 @@ namespace CareHome.Migrations
                     b.Navigation("Departments");
                 });
 
+            modelBuilder.Entity("CareHome.Models.Qualifications", b =>
+                {
+                    b.HasOne("CareHome.Models.Staff", "Staff")
+                        .WithMany("Qualifications")
+                        .HasForeignKey("StaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Staff");
+                });
+
             modelBuilder.Entity("CareHome.Models.Staff", b =>
                 {
                     b.HasOne("CareHome.Models.AddressDetails", "AddressDetails")
@@ -424,6 +476,11 @@ namespace CareHome.Migrations
                 {
                     b.Navigation("Staff")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CareHome.Models.Staff", b =>
+                {
+                    b.Navigation("Qualifications");
                 });
 #pragma warning restore 612, 618
         }

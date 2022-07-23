@@ -21,4 +21,14 @@
         $(".AddressDetailsTable").dialog("open");
         $(".ContactInfoTable").dialog("close");
     });
+    $("#Department").change(function () {
+        $.getJSON("/Staff/GetJobList", { DepartmentId: parseInt($("#Department").val()) }, function (data) {
+            let row = "";
+            $("#JobTitle").empty();
+            $.each(data, function (index, item) {
+                row += "<option value=" + item.value + ">" + item.text + "</option>";
+            });
+            $("#JobTitle").html(row);
+        })
+    })
 });

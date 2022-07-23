@@ -12,21 +12,23 @@ namespace CareHome.Models
         public int StaffId { get; set; }
 
         [Required]
+        [Display(Name = "First Names")]
         [Column(TypeName = "VARCHAR(256)")]
         [StringLength(256, MinimumLength = 2)]
         public string Forename { get; set; }
 
+        [Display(Name = "Middle Names")]
         [Column(TypeName = "VARCHAR(256)")]
         [StringLength(256, MinimumLength = 2)]
         public string MiddleNames { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
         [Column(TypeName = "VARCHAR(256)")]
         [StringLength(256, MinimumLength = 2)]
         public string LastName { get; set; }
 
-        public CareHomes CareHomes { get; set; }
-
+        [Display(Name = "Gender")]
         public int? GenderTypesId { get; set; }
 
         public GenderTypes Gender { get; set; }
@@ -39,6 +41,7 @@ namespace CareHome.Models
 
         public ContactDetails ContactInfo { get; set; }
 
+        [Display(Name = "Ethnicity")]
         public int? EthnicityGroupsId { get; set; }
 
         public EthnicityGroups Ethnicity { get; set; }
@@ -48,10 +51,12 @@ namespace CareHome.Models
         [DisplayFormat(DataFormatString = "{0:dd-MMM-YYYY}", ApplyFormatInEditMode = true)]
         public DateTime DOB { get; set; }
 
+        [Display(Name = "Department")]
         public int? DepartmentId { get; set; }
 
         public Departments Department { get; set; }
 
+        [Display(Name = "Job Title")]
         public int? JobTitlesId { get; set; }
 
         public JobTitles JobTitle { get; set; }
@@ -60,5 +65,9 @@ namespace CareHome.Models
         [DataType(DataType.Currency)]
         [Range(1, 900000)]
         public decimal Salary { get; set; }
+
+        public ICollection<Qualifications>? Qualifications { get; set; }
+
+        public CareHomes CareHomes { get; set; }
     }
 }

@@ -17,8 +17,8 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        @await Html.PartialAsync("../AddressDetails/Details.cshtml", Model)
-        @await Html.PartialAsync("../ContactDetails/Details.cshtml", Model)
+        @await Html.PartialAsync("../AddressDetails/Details.cshtml", Model.AddressDetails)
+        @await Html.PartialAsync("../ContactDetails/Details.cshtml", Model.ContactInfo)
     </dl>
 
     <form asp-action="Delete">

@@ -51,15 +51,15 @@ namespace CareHome.Controllers
         {
             ViewData["AddressDetailsId"] = new SelectList(_context.AddressDetails, "AddressDetailsId", "NumberStreetName");
             ViewData["ContactDetailsId"] = new SelectList(_context.ContactDetails, "ContactDetailsId", "ContactName");
-            var foo = new CareHomes()
+
+
+            CareHomes CareHome = new()
             {
-                AddressDetails = new AddressDetails(),
-                ContactInfo = new ContactDetails()
+                AddressDetails = new CareHome.Models.AddressDetails(),
+                ContactInfo = new CareHome.Models.ContactDetails()
             };
 
-
-
-            return View(foo);
+            return View(CareHome);
         }
 
         // POST: CareHomes/Create
@@ -67,7 +67,8 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CareHomesId,Name,AddressDetails,ContactInfo")] CareHomes careHomes)
+        //
+        public async Task<IActionResult> Create([Bind(include: "CareHomes, Name,AddressDetails, ContactInfo")] CareHomes careHomes)
         {
             if (ModelState.IsValid)
             {

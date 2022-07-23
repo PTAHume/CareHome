@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using CareHome.Data;
 using CareHome.Models;
 
-namespace CareHome.Views.AddressDetails
+namespace CareHome.Views.Quaifications
 {
     public class EditModel : PageModel
     {
@@ -21,21 +21,21 @@ namespace CareHome.Views.AddressDetails
         }
 
         [BindProperty]
-        public CareHome.Models.AddressDetails AddressDetails { get; set; } = default!;
+        public Qualifications Qualifications { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.AddressDetails == null)
+            if (id == null || _context.Qualifications == null)
             {
                 return NotFound();
             }
 
-            var addressdetails = await _context.AddressDetails.FirstOrDefaultAsync(m => m.AddressDetailsId == id);
-            if (addressdetails == null)
+            var qualifications =  await _context.Qualifications.FirstOrDefaultAsync(m => m.QualificationsId == id);
+            if (qualifications == null)
             {
                 return NotFound();
             }
-            AddressDetails = addressdetails;
+            Qualifications = qualifications;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace CareHome.Views.AddressDetails
                 return Page();
             }
 
-            _context.Attach(AddressDetails).State = EntityState.Modified;
+            _context.Attach(Qualifications).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace CareHome.Views.AddressDetails
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AddressDetailsExists(AddressDetails.AddressDetailsId))
+                if (!QualificationsExists(Qualifications.QualificationsId))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace CareHome.Views.AddressDetails
             return RedirectToPage("./Index");
         }
 
-        private bool AddressDetailsExists(int id)
+        private bool QualificationsExists(int id)
         {
-            return (_context.AddressDetails?.Any(e => e.AddressDetailsId == id)).GetValueOrDefault();
+          return (_context.Qualifications?.Any(e => e.QualificationsId == id)).GetValueOrDefault();
         }
     }
 }

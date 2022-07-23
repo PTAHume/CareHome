@@ -20,8 +20,8 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
-    @await Html.PartialAsync("../AddressDetails/Details.cshtml", Model)
-    @await Html.PartialAsync("../ContactDetails/Details.cshtml", Model)
+    @await Html.PartialAsync("../AddressDetails/Details.cshtml", Model.AddressDetails)
+    @await Html.PartialAsync("../ContactDetails/Details.cshtml", Model.ContactInfo)
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.CareHomesId">Edit</a> |

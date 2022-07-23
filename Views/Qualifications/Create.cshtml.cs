@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using CareHome.Data;
 using CareHome.Models;
 
-namespace CareHome.Views.ContactDetails
+namespace CareHome.Views.Quaifications
 {
     public class CreateModel : PageModel
     {
@@ -25,18 +25,18 @@ namespace CareHome.Views.ContactDetails
         }
 
         [BindProperty]
-        public CareHome.Models.ContactDetails ContactDetails { get; set; } = default!;
-
+        public Qualifications Qualifications { get; set; } = default!;
+        
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.ContactDetails == null || ContactDetails == null)
+          if (!ModelState.IsValid || _context.Qualifications == null || Qualifications == null)
             {
                 return Page();
             }
 
-            _context.ContactDetails.Add(ContactDetails);
+            _context.Qualifications.Add(Qualifications);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
