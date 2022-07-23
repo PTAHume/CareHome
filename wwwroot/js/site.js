@@ -10,13 +10,14 @@
         resizable: true,
         width: '80%',
     });
-
-    $("#DisplayContactDetails").on("click", function (e) {
+    $(".datepicker").datepicker("option", "dateFormat", "dd-M-y");
+    $(".DisplayContactDetails").on("click", function (e) {
+        debugger
         e.preventDefault();
         $(".AddressDetailsTable").dialog("close");
         $(".ContactInfoTable").dialog("open");
     });
-    $("#DisplayAddressDetail").on("click", function (e) {
+    $(".DisplayAddressDetail").on("click", function (e) {
         e.preventDefault();
         $(".AddressDetailsTable").dialog("open");
         $(".ContactInfoTable").dialog("close");

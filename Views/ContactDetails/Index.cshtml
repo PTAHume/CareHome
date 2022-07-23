@@ -1,20 +1,20 @@
-﻿@model CareHome.Models.CareHomes
+﻿@model CareHome.Models.ContactDetails
 
 <div class="ContactInfoTable modal">
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ContactInfo.ContactName)
+                    @Html.DisplayNameFor(model => model.ContactName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ContactInfo.PrimaryNumber)
+                    @Html.DisplayNameFor(model => model.PrimaryNumber)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ContactInfo.SecondaryNumber)
+                    @Html.DisplayNameFor(model => model.SecondaryNumber)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ContactInfo.EMail)
+                    @Html.DisplayNameFor(model => model.EMail)
                 </th>
             </tr>
         </thead>
@@ -22,16 +22,16 @@
         <tbody>
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.ContactInfo.ContactName)
+                    @Html.DisplayFor(model => model.ContactName)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.ContactInfo.PrimaryNumber)
+                    @Html.DisplayFor(model => model.PrimaryNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.ContactInfo.SecondaryNumber)
+                    @Html.DisplayFor(model => model.SecondaryNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.ContactInfo.EMail)
+                    @Html.DisplayFor(model => model.EMail)
                 </td>
 
             </tr>

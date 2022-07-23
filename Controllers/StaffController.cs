@@ -24,12 +24,20 @@ namespace CareHome.Controllers
                 .Include(s => s.AddressDetails)
                 .Include(s => s.ContactInfo)
                 .Include(s => s.Department)
+                .Include(s => s.CareHomes)
                 .Include(s => s.Qualifications)
+                .Include(s => s.Department)
+                .Include(s => s.JobTitle)
                 .Include(s => s.Ethnicity)
                 .Include(s => s.Gender)
                 .Include(s => s.JobTitle);
 
-            return View(await careHomeContext.ToListAsync());
+
+
+
+
+
+            return View(moo);
         }
 
         // GET: Staffs/Details/5
@@ -83,6 +91,7 @@ namespace CareHome.Controllers
             ViewData["EthnicityGroupsId"] = new SelectList(_context.EthnicityGroups, "EthnicityGroupsId", "GroupName");
             ViewData["GenderTypesId"] = new SelectList(_context.GenderTypes, "GenderTypesId", "Gender");
             ViewData["JobTitlesId"] = new SelectList(_context.JobTitles, "JobTitlesId", "Description");
+            ViewData["CareHomesId"] = new SelectList(_context.CareHomes, "CareHomesId", "Name");
             Staff StaffData = new Staff()
             {
                 ContactDetailsId = 0,
@@ -103,7 +112,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StaffId,Forename,MiddleNames,LastName,GenderTypesId,Gender,AddressDetails,CareHomes, ContactInfo,EthnicityGroupsId,Ethnicity,DOB,DepartmentId,Department,JobTitlesId,Salary")] Staff staff)
+        public async Task<IActionResult> Create([Bind("StaffId,Forename,MiddleNames,LastName,GenderTypesId,Gender,AddressDetails,CareHomes, ContactInfo,EthnicityGroupsId,Ethnicity,DOB,DepartmentId,Department,JobTitlesId,Salary,CareHomesId")] Staff staff)
         {
             if (ModelState.IsValid)
             {

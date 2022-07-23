@@ -24,6 +24,7 @@ namespace CareHome.Models
         [Column(TypeName = "DECIMAL(18, 2)")]
         public decimal DefaultSalary { get; set; }
 
+
         public Departments Departments { get; set; }
     }
 }

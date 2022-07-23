@@ -31,35 +31,35 @@ namespace CareHome.Models
         [Display(Name = "Gender")]
         public int? GenderTypesId { get; set; }
 
-        public GenderTypes Gender { get; set; }
+        public GenderTypes? Gender { get; set; }
 
         public int? AddressDetailsId { get; set; }
 
-        public AddressDetails AddressDetails { get; set; }
+        public AddressDetails? AddressDetails { get; set; }
 
         public int? ContactDetailsId { get; set; }
 
-        public ContactDetails ContactInfo { get; set; }
+        public ContactDetails? ContactInfo { get; set; }
 
         [Display(Name = "Ethnicity")]
         public int? EthnicityGroupsId { get; set; }
 
-        public EthnicityGroups Ethnicity { get; set; }
+        public EthnicityGroups? Ethnicity { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "Date Of Birth")]
-        [DisplayFormat(DataFormatString = "{0:dd-MMM-YYYY}", ApplyFormatInEditMode = true)]
+
         public DateTime DOB { get; set; }
 
         [Display(Name = "Department")]
         public int? DepartmentId { get; set; }
 
-        public Departments Department { get; set; }
+        public Departments? Department { get; set; }
 
         [Display(Name = "Job Title")]
         public int? JobTitlesId { get; set; }
 
-        public JobTitles JobTitle { get; set; }
+        public JobTitles? JobTitle { get; set; }
 
         [Column(TypeName = "DECIMAL(18, 2)")]
         [DataType(DataType.Currency)]
@@ -68,6 +68,8 @@ namespace CareHome.Models
 
         public ICollection<Qualifications>? Qualifications { get; set; }
 
-        public CareHomes CareHomes { get; set; }
+        public int? CareHomesId { get; set; }
+
+        public CareHomes? CareHomes { get; set; }
     }
 }

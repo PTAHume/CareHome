@@ -282,7 +282,7 @@ namespace CareHome.Migrations
                     b.Property<int?>("AddressDetailsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CareHomesId")
+                    b.Property<int?>("CareHomesId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ContactDetailsId")
@@ -402,9 +402,7 @@ namespace CareHome.Migrations
 
                     b.HasOne("CareHome.Models.CareHomes", "CareHomes")
                         .WithMany("StaffMembers")
-                        .HasForeignKey("CareHomesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CareHomesId");
 
                     b.HasOne("CareHome.Models.ContactDetails", "ContactInfo")
                         .WithMany()

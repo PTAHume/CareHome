@@ -165,7 +165,7 @@ namespace CareHome.Migrations
                     DepartmentId = table.Column<int>(type: "int", nullable: true),
                     JobTitlesId = table.Column<int>(type: "int", nullable: true),
                     Salary = table.Column<decimal>(type: "DECIMAL(18,2)", nullable: false),
-                    CareHomesId = table.Column<int>(type: "int", nullable: false)
+                    CareHomesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -179,8 +179,7 @@ namespace CareHome.Migrations
                         name: "FK_Staff_CareHomes_CareHomesId",
                         column: x => x.CareHomesId,
                         principalTable: "CareHomes",
-                        principalColumn: "CareHomesId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CareHomesId");
                     table.ForeignKey(
                         name: "FK_Staff_ContactDetails_ContactDetailsId",
                         column: x => x.ContactDetailsId,
@@ -280,21 +279,21 @@ namespace CareHome.Migrations
                 name: "IX_Staff_DepartmentId",
                 table: "Staff",
                 column: "DepartmentId",
-                unique: true,
+                unique: false,
                 filter: "[DepartmentId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Staff_EthnicityGroupsId",
                 table: "Staff",
                 column: "EthnicityGroupsId",
-                unique: true,
+                unique: false,
                 filter: "[EthnicityGroupsId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Staff_GenderTypesId",
                 table: "Staff",
                 column: "GenderTypesId",
-                unique: true,
+                unique: false,
                 filter: "[GenderTypesId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(

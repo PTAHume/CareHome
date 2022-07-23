@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHome.Migrations
 {
     [DbContext(typeof(CareHomeContext))]
-    [Migration("20220722111335_InitialCreate")]
+    [Migration("20220723043205_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -284,7 +284,7 @@ namespace CareHome.Migrations
                     b.Property<int?>("AddressDetailsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CareHomesId")
+                    b.Property<int?>("CareHomesId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ContactDetailsId")
@@ -404,9 +404,7 @@ namespace CareHome.Migrations
 
                     b.HasOne("CareHome.Models.CareHomes", "CareHomes")
                         .WithMany("StaffMembers")
-                        .HasForeignKey("CareHomesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CareHomesId");
 
                     b.HasOne("CareHome.Models.ContactDetails", "ContactInfo")
                         .WithMany()

@@ -22,16 +22,10 @@
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.AddressDetails)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ContactInfo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ethnicity)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DOB)
@@ -43,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.JobTitle)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Salary)
+                @Html.DisplayNameFor(model => model.CareHomes)
             </th>
             <th></th>
         </tr>
@@ -62,30 +56,24 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Gender.Gender)
+                    <a href="javascript:void(0);" rel="modal:open" class="DisplayAddressDetail">view</a>
+                    @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" id="DisplayAddressDetail">view</a>
-                    @await Html.PartialAsync("../AddressDetails/Index.cshtml", item,ViewData)
-                </td>
-                <td>
-                    <a href="javascript:void(0);" rel="modal:open" id="DisplayContactDetails">view</a>
-                    @await Html.PartialAsync("../ContactDetails/Index.cshtml", item)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ethnicity.GroupName)
+                    <a href="javascript:void(0);" rel="modal:open" class="DisplayContactDetails">view</a>
+                    @await Html.PartialAsync("../ContactDetails/Index.cshtml", item.ContactInfo,ViewData)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DOB)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Department.Description)
+                    @Html.DisplayFor(modelItem => item.Department.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.JobTitle.Description)
+                    @Html.DisplayFor(modelItem => item.JobTitle.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Salary)
+                    @Html.DisplayFor(modelItem => item.CareHomes.Name)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.StaffId">Edit</a> |

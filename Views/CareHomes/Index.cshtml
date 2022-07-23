@@ -32,12 +32,12 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" id="DisplayAddressDetail">view</a>
-                    @await Html.PartialAsync("../AddressDetails/Index.cshtml", item,ViewData)
+                    <a href="javascript:void(0);" rel="modal:open" class="DisplayAddressDetail">view</a>
+                    @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" id="DisplayContactDetails">view</a>
-                    @await Html.PartialAsync("../ContactDetails/Index.cshtml", item)
+                    <a href="javascript:void(0);" rel="modal:open" class="DisplayContactDetails">view</a>
+                    @await Html.PartialAsync("../ContactDetails/Index.cshtml", item.ContactInfo)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.CareHomesId">Edit</a> |
