@@ -218,7 +218,7 @@ namespace CareHome.Migrations
                     Grade = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     InstitutionalName = table.Column<string>(type: "VARCHAR(256)", maxLength: 256, nullable: false),
                     AttainmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StaffId = table.Column<int>(type: "int", nullable: false)
+                    StaffId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -227,8 +227,7 @@ namespace CareHome.Migrations
                         name: "FK_Qualifications_Staff_StaffId",
                         column: x => x.StaffId,
                         principalTable: "Staff",
-                        principalColumn: "StaffId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "StaffId");
                 });
 
             migrationBuilder.CreateIndex(
@@ -278,23 +277,17 @@ namespace CareHome.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Staff_DepartmentId",
                 table: "Staff",
-                column: "DepartmentId",
-                unique: false,
-                filter: "[DepartmentId] IS NOT NULL");
+                column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Staff_EthnicityGroupsId",
                 table: "Staff",
-                column: "EthnicityGroupsId",
-                unique: false,
-                filter: "[EthnicityGroupsId] IS NOT NULL");
+                column: "EthnicityGroupsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Staff_GenderTypesId",
                 table: "Staff",
-                column: "GenderTypesId",
-                unique: false,
-                filter: "[GenderTypesId] IS NOT NULL");
+                column: "GenderTypesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Staff_JobTitlesId",

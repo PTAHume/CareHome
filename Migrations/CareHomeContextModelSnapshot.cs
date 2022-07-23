@@ -261,7 +261,7 @@ namespace CareHome.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
-                    b.Property<int>("StaffId")
+                    b.Property<int?>("StaffId")
                         .HasColumnType("int");
 
                     b.HasKey("QualificationsId");
@@ -329,17 +329,11 @@ namespace CareHome.Migrations
 
                     b.HasIndex("ContactDetailsId");
 
-                    b.HasIndex("DepartmentId")
-                        .IsUnique()
-                        .HasFilter("[DepartmentId] IS NOT NULL");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("EthnicityGroupsId")
-                        .IsUnique()
-                        .HasFilter("[EthnicityGroupsId] IS NOT NULL");
+                    b.HasIndex("EthnicityGroupsId");
 
-                    b.HasIndex("GenderTypesId")
-                        .IsUnique()
-                        .HasFilter("[GenderTypesId] IS NOT NULL");
+                    b.HasIndex("GenderTypesId");
 
                     b.HasIndex("JobTitlesId");
 
@@ -387,9 +381,7 @@ namespace CareHome.Migrations
                 {
                     b.HasOne("CareHome.Models.Staff", "Staff")
                         .WithMany("Qualifications")
-                        .HasForeignKey("StaffId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StaffId");
 
                     b.Navigation("Staff");
                 });
@@ -409,16 +401,16 @@ namespace CareHome.Migrations
                         .HasForeignKey("ContactDetailsId");
 
                     b.HasOne("CareHome.Models.Departments", "Department")
-                        .WithOne("Staff")
-                        .HasForeignKey("CareHome.Models.Staff", "DepartmentId");
+                        .WithMany("StaffMembers")
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("CareHome.Models.EthnicityGroups", "Ethnicity")
-                        .WithOne("Staff")
-                        .HasForeignKey("CareHome.Models.Staff", "EthnicityGroupsId");
+                        .WithMany()
+                        .HasForeignKey("EthnicityGroupsId");
 
                     b.HasOne("CareHome.Models.GenderTypes", "Gender")
-                        .WithOne("Staff")
-                        .HasForeignKey("CareHome.Models.Staff", "GenderTypesId");
+                        .WithMany()
+                        .HasForeignKey("GenderTypesId");
 
                     b.HasOne("CareHome.Models.JobTitles", "JobTitle")
                         .WithMany()
@@ -458,22 +450,12 @@ namespace CareHome.Migrations
                 {
                     b.Navigation("JobTitles");
 
-                    b.Navigation("Staff")
-                        .IsRequired();
+                    b.Navigation("StaffMembers");
                 });
 
             modelBuilder.Entity("CareHome.Models.EthnicityGroups", b =>
                 {
                     b.Navigation("EthnicityClasses");
-
-                    b.Navigation("Staff")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CareHome.Models.GenderTypes", b =>
-                {
-                    b.Navigation("Staff")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("CareHome.Models.Staff", b =>

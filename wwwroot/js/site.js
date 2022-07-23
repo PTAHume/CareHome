@@ -12,15 +12,14 @@
     });
     $(".datepicker").datepicker("option", "dateFormat", "dd-M-y");
     $(".DisplayContactDetails").on("click", function (e) {
-        debugger
         e.preventDefault();
-        $(".AddressDetailsTable").dialog("close");
-        $(".ContactInfoTable").dialog("open");
+        // $(".modal").dialog("close");
+        $("div").find(`[data-Contact-details-table='${$(this).attr('data-id')}']`).dialog("open");
     });
     $(".DisplayAddressDetail").on("click", function (e) {
         e.preventDefault();
-        $(".AddressDetailsTable").dialog("open");
-        $(".ContactInfoTable").dialog("close");
+        // $(".modal").dialog("close");
+        $("div").find(`[data-address-details-table='${$(this).attr('data-id')}']`).dialog("open");
     });
     $("#Department").change(function () {
         $.getJSON("/Staff/GetJobList", { DepartmentId: parseInt($("#Department").val()) }, function (data) {

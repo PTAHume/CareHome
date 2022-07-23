@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CareHome.Data;
+﻿using CareHome.Data;
 using CareHome.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CareHome.Controllers
 {
@@ -20,11 +15,24 @@ namespace CareHome.Controllers
         }
 
         // GET: Qualifications
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-              return _context.Qualifications != null ? 
-                          View(await _context.Qualifications.ToListAsync()) :
-                          Problem("Entity set 'CareHomeContext.Qualifications'  is null.");
+            if (_context.Qualifications == null)
+            {
+                return Problem("Entity set 'CareHomeContext.Qualifications'  is null.");
+            }
+
+            if (await _context.Qualifications.AnyAsync(x => x.StaffId == id))
+            {
+                ViewData["id"] = id;
+                // QualificationsList.ForEach(x => x.Staff = _context!.Staff.First(x => x.StaffId == id));
+                return View(await _context.Qualifications.Include(s => s.Staff).Where(x => x.StaffId == id).ToListAsync());
+            }
+            else
+            {
+                ViewData["id"] = 0;
+                return View(new List<Qualifications>() { new Qualifications() { StaffId = id, Staff = _context.Staff.First(x => x.StaffId == id) } });
+            }
         }
 
         // GET: Qualifications/Details/5
@@ -35,7 +43,7 @@ namespace CareHome.Controllers
                 return NotFound();
             }
 
-            var qualifications = await _context.Qualifications
+            var qualifications = await _context.Qualifications.Include(s => s.Staff)
                 .FirstOrDefaultAsync(m => m.QualificationsId == id);
             if (qualifications == null)
             {
@@ -46,9 +54,11 @@ namespace CareHome.Controllers
         }
 
         // GET: Qualifications/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            return View();
+            var staffId = _context.Staff.First(x => x.StaffId == id).StaffId;
+
+            return View(new Qualifications() { StaffId = staffId });
         }
 
         // POST: Qualifications/Create
@@ -56,13 +66,13 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QualificationsId,QualificationType,Name,Grade,InstitutionalName,AttainmentDate")] Qualifications qualifications)
+        public async Task<IActionResult> Create([Bind("QualificationsId,QualificationType,Name,Grade,InstitutionalName,AttainmentDate,StaffId")] Qualifications qualifications)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(qualifications);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id = qualifications.StaffId });
             }
             return View(qualifications);
         }
@@ -75,7 +85,7 @@ namespace CareHome.Controllers
                 return NotFound();
             }
 
-            var qualifications = await _context.Qualifications.FindAsync(id);
+            var qualifications = await _context.Qualifications.Include(s => s.Staff).FirstOrDefaultAsync(x => x.QualificationsId == id);
             if (qualifications == null)
             {
                 return NotFound();
@@ -126,7 +136,7 @@ namespace CareHome.Controllers
                 return NotFound();
             }
 
-            var qualifications = await _context.Qualifications
+            var qualifications = await _context.Qualifications.Include(s => s.Staff)
                 .FirstOrDefaultAsync(m => m.QualificationsId == id);
             if (qualifications == null)
             {
@@ -150,14 +160,14 @@ namespace CareHome.Controllers
             {
                 _context.Qualifications.Remove(qualifications);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool QualificationsExists(int id)
         {
-          return (_context.Qualifications?.Any(e => e.QualificationsId == id)).GetValueOrDefault();
+            return (_context.Qualifications?.Any(e => e.QualificationsId == id)).GetValueOrDefault();
         }
     }
 }

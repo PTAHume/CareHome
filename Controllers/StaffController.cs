@@ -3,6 +3,7 @@ using CareHome.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Linq;
 
@@ -11,16 +12,17 @@ namespace CareHome.Controllers
     public class StaffController : Controller
     {
         private readonly CareHomeContext _context;
-
-        public StaffController(CareHomeContext context)
+        private readonly IMemoryCache _MemoryCache;
+        public StaffController(CareHomeContext context, IMemoryCache memoryCache)
         {
             _context = context;
+            _MemoryCache = memoryCache;
         }
 
         // GET: Staffs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? Id)
         {
-            var careHomeContext = _context.Staff
+            var careHomeContext = _context.Staff.Where(x => x.CareHomesId == Id)
                 .Include(s => s.AddressDetails)
                 .Include(s => s.ContactInfo)
                 .Include(s => s.Department)
@@ -32,12 +34,7 @@ namespace CareHome.Controllers
                 .Include(s => s.Gender)
                 .Include(s => s.JobTitle);
 
-
-
-
-
-
-            return View(moo);
+            return View(await careHomeContext.ToListAsync());
         }
 
         // GET: Staffs/Details/5
@@ -78,9 +75,6 @@ namespace CareHome.Controllers
         // GET: Staffs/Create
         public IActionResult Create()
         {
-
-
-
             List<SelectListItem> DepartmentList = new List<SelectListItem>();
             DepartmentList.Add(new SelectListItem { Text = "", Value = "-1" });
             DepartmentList.AddRange(_context.Departments.Select(x => new SelectListItem { Text = x.Name, Value = x.DepartmentId.ToString() }));
@@ -92,10 +86,12 @@ namespace CareHome.Controllers
             ViewData["GenderTypesId"] = new SelectList(_context.GenderTypes, "GenderTypesId", "Gender");
             ViewData["JobTitlesId"] = new SelectList(_context.JobTitles, "JobTitlesId", "Description");
             ViewData["CareHomesId"] = new SelectList(_context.CareHomes, "CareHomesId", "Name");
+
             Staff StaffData = new Staff()
             {
                 ContactDetailsId = 0,
                 AddressDetailsId = 0,
+                Qualifications = new List<Qualifications>(),
                 CareHomes = new CareHomes(),
                 Ethnicity = new EthnicityGroups(),
                 Gender = new GenderTypes(),
@@ -104,6 +100,26 @@ namespace CareHome.Controllers
             };
 
             return View(StaffData);
+        }
+
+
+
+        // POST: Qualifications/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Add([Bind("QualificationsId,QualificationType,Name,Grade,InstitutionalName,AttainmentDate")] Qualifications qualifications)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(qualifications);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(qualifications);
+
+            return RedirectToAction("Create", "Staff");
         }
 
 

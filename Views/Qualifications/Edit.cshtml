@@ -1,37 +1,38 @@
-﻿@page
-@model CareHome.Views.Quaifications.EditModel
+﻿@model CareHome.Models.Qualifications
 
-<h4>Qualifications</h4>
+<h4>
+    Qualifications For:  @Html.DisplayFor(model => model.Staff.Forename) @Html.DisplayFor(model => model.Staff.MiddleNames)  @Html.DisplayFor(model => model.Staff.LastName)
+</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Qualifications.QualificationsId" />
+            <input type="hidden" asp-for="QualificationsId" />
             <div class="form-group">
-                <label asp-for="Qualifications.QualificationType" class="control-label"></label>
-                <input asp-for="Qualifications.QualificationType" class="form-control" />
-                <span asp-validation-for="Qualifications.QualificationType" class="text-danger"></span>
+                <label asp-for="QualificationType" class="control-label"></label>
+                <input asp-for="QualificationType" class="form-control" />
+                <span asp-validation-for="QualificationType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Qualifications.Name" class="control-label"></label>
-                <input asp-for="Qualifications.Name" class="form-control" />
-                <span asp-validation-for="Qualifications.Name" class="text-danger"></span>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Qualifications.Grade" class="control-label"></label>
-                <input asp-for="Qualifications.Grade" class="form-control" />
-                <span asp-validation-for="Qualifications.Grade" class="text-danger"></span>
+                <label asp-for="Grade" class="control-label"></label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Qualifications.InstitutionalName" class="control-label"></label>
-                <input asp-for="Qualifications.InstitutionalName" class="form-control" />
-                <span asp-validation-for="Qualifications.InstitutionalName" class="text-danger"></span>
+                <label asp-for="InstitutionalName" class="control-label"></label>
+                <input asp-for="InstitutionalName" class="form-control" />
+                <span asp-validation-for="InstitutionalName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Qualifications.AttainmentDate" class="control-label"></label>
-                <input asp-for="Qualifications.AttainmentDate" class="form-control" />
-                <span asp-validation-for="Qualifications.AttainmentDate" class="text-danger"></span>
+                <label asp-for="AttainmentDate" class="control-label"></label>
+                <input asp-for="AttainmentDate" class="form-control" />
+                <span asp-validation-for="AttainmentDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -41,9 +42,13 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a href="~/Qualifications/Index/@Model.StaffId">Back Qualifications List</a>| <br />
+    <a href="~/Staff/Details/@Model.StaffId">Back To Staff Details</a>| <br />
+    <a href="~/Staff/Index/@Model.Staff.CareHomesId">Back To Staff Page</a>| <br />
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

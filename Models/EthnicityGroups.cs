@@ -15,8 +15,6 @@ namespace CareHome.Models
         [StringLength(256, MinimumLength = 2)]
         public string GroupName { get; set; }
 
-        public Staff Staff { get; set; }
-
         public ICollection<EthnicityTypes> EthnicityClasses { get; set; }
     }
 }

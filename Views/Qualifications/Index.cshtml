@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<CareHome.Models.Qualifications>
-
+<h4>
+    Qualifications For:  @Html.DisplayFor(model => model.FirstOrDefault().Staff.Forename) @Html.DisplayFor(model => model.FirstOrDefault().Staff.MiddleNames)  @Html.DisplayFor(model => model.FirstOrDefault().Staff.LastName)
+</h4>
+<p>
+    <a asp-action="Create" asp-route-id="@Model.FirstOrDefault().StaffId">Add New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -24,7 +29,7 @@
     <tbody>
         @if (Model != null && Model.Any())
         {
-            @foreach (var item in Model)
+            @foreach (var item in Model.Where(x => x.StaffId == int.Parse(ViewData["id"].ToString())))
             {
                 <tr>
                     <td>
@@ -43,9 +48,21 @@
                         @Html.DisplayFor(modelItem => item.AttainmentDate)
                     </td>
                     <td>
+                        <a asp-action="Edit" asp-route-id="@item.QualificationsId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.QualificationsId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.QualificationsId">Delete</a>
                     </td>
                 </tr>
             }
+
         }
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <a href="~/Staff/Details/@Model.FirstOrDefault().StaffId">Back to staff details</a> | <br />
+                <a href="~/Staff/Index/@Model.FirstOrDefault().Staff.CareHomesId">Back to staff page</a>
+            </td>
+        </tr>
+    </tfoot>
 </table>

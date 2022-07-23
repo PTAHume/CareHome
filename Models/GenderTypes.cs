@@ -13,7 +13,5 @@ namespace CareHome.Models
         [Column(TypeName = "VARCHAR(256)")]
         [StringLength(256, MinimumLength = 2)]
         public string Gender { get; set; }
-
-        public Staff Staff { get; set; }
     }
 }

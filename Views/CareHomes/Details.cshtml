@@ -22,6 +22,10 @@
     </dl>
     @await Html.PartialAsync("../AddressDetails/Details.cshtml", Model.AddressDetails)
     @await Html.PartialAsync("../ContactDetails/Details.cshtml", Model.ContactInfo)
+
+    <div>
+        <a class="class=" btn btn-danger"" href="~/Staff/Index/@Model.CareHomesId">Manage Staff For This Health Care</a>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.CareHomesId">Edit</a> |

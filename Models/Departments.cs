@@ -20,7 +20,7 @@ namespace CareHome.Models
         [StringLength(8000, MinimumLength = 3)]
         public string Description { get; set; }
 
-        public Staff Staff { get; set; }
+        public ICollection<Staff> StaffMembers { get; set; }
 
         public ICollection<JobTitles> JobTitles { get; set; }
     }
