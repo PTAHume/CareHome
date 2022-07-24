@@ -23,7 +23,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-       # publishes Blazor project to the release-folder
+       # publishes Blazor project to the release-folder       
+    - name: Build
+      run: dotnet build ./CareHome.csproj
+    - name: Test
+      run: dotnet test  ./CareHomeTest/CareHomeTest.csproj --verbosity normal   
     - name: Publish .NET Core Project
       run: dotnet publish CareHome.csproj -c Release -o release --nologo
     - name: Commit wwwroot to GitHub Pages
