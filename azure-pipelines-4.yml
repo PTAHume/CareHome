@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'PATRICK-HUME'
+  vmImage: PATRICK-HUME
 
 variables:
   solution: '**/*.sln'
