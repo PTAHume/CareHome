@@ -8,7 +8,7 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-  name: 'mydockeragent'
+  name: 'Default'
 
 variables:
   solution: '**/*.sln'
