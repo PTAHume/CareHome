@@ -1,0 +1,60 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="CareHomeTest" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="CareHomeTest" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="TestCareHome" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="CareHomeTest.TestCareHome.Annotations_Enforce_Required_Attributee" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="CareHomeTest.TestCareHome.Annotations_Enforce_Required_Attributee" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="CareHomeTest.TestCareHome.Create_Returns_InvalidModel" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="CareHomeTest.TestCareHome.Create_Returns_InvalidModel" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="CareHomeTest.TestCareHome.EditPost_ReturnsARedirect_WhenModelStateIsValid" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="CareHomeTest.TestCareHome.EditPost_ReturnsARedirect_WhenModelStateIsValid" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="CareHomeTest.TestCareHome.Edit_ReturnsNotFound_GivenInvalidId" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="CareHomeTest.TestCareHome.Edit_ReturnsNotFound_GivenInvalidId" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="CareHomeTest.TestCareHome.Get_JobTitles_Returns_JSON_Data" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="CareHomeTest.TestCareHome.Get_JobTitles_Returns_JSON_Data" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="CareHomeTest.TestCareHome.Index_ReturnsAViewResult_WithACareHome" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="CareHomeTest.TestCareHome.Index_ReturnsAViewResult_WithACareHome" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>

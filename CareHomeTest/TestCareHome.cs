@@ -9,16 +9,17 @@ using Newtonsoft.Json;
 using System.Web.Mvc;
 using RedirectToActionResult = Microsoft.AspNetCore.Mvc.RedirectToActionResult;
 using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
-
+using Assert = Xunit.Assert;
 namespace CareHomeTest
 {
-    public class UnitCareHome
+
+    public class TestCareHome
     {
         private protected DbContextOptions<CareHomeContext> _contextOptions;
 
         private protected CareHomeContext _context;
 
-        public UnitCareHome()
+        public TestCareHome()
         {
             _contextOptions = new DbContextOptionsBuilder<CareHomeContext>()
                       .UseInMemoryDatabase("CareHomeControllerTest2")
@@ -29,6 +30,7 @@ namespace CareHomeTest
         }
 
         [Fact]
+
         public async Task Get_JobTitles_Returns_JSON_Data()
         {
             //Arrange
@@ -49,7 +51,7 @@ namespace CareHomeTest
 
             //Assert
             Assert.IsAssignableFrom<IEnumerable<SelectListItem>>(
-                JsonConvert.DeserializeObject<IEnumerable<SelectListItem>>(json));
+                  JsonConvert.DeserializeObject<IEnumerable<SelectListItem>>(json));
             List<SelectListItem> resultList = JsonConvert.DeserializeObject<IEnumerable<SelectListItem>>(json).ToList();
             resultList.Should().BeEquivalentTo(testList);
         }
