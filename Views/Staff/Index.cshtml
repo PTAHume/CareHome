@@ -11,7 +11,6 @@
 <p>
     <a asp-action="Create" asp-route-id="@Model.First().CareHomesId">Create New</a>
 </p>
-@Html.DisplayFor(model => model.FirstOrDefault().CareHomesId);
 <table class="table tableSorter">
     <thead>
         <tr>
@@ -42,7 +41,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.CareHomes)
             </th>
-            <th data-sorter="false" data-filter="false"></t>
+            <th data-sorter="false" data-filter="false"></th>
         </tr>
     </thead>
     <tbody>

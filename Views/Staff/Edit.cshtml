@@ -12,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" id="Staff">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="StaffId" />
             <input type="hidden" asp-for="CareHomesId" />
@@ -58,12 +58,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="DepartmentId" class="control-label"></label>
-                <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                <select id="Department" asp-for="DepartmentId" class="form-control" data-rule-hasSelection="true" asp-items="@(new SelectList(ViewBag.DepartmentId,"Value","Text", ViewBag.DepId))"></select>
                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JobTitlesId" class="control-label"></label>
-                <select asp-for="JobTitlesId" class="form-control" asp-items="ViewBag.JobTitlesId"></select>
+                <select id="JobTitle" asp-for="JobTitlesId" class="form-control" data-rule-hasSelection="true" asp-items="@(new SelectList(ViewBag.JobTitlesId, "Value", "Text",ViewBag.JobTId))"></select>
                 <span asp-validation-for="JobTitlesId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -72,7 +72,7 @@
                 <span asp-validation-for="Salary" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" id="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
 

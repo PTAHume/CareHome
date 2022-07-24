@@ -8,7 +8,7 @@
 
 <div>
     <h4>Care Home Details</h4>
-    <hr />
+    <h1><a class="btn btn-info" href="~/Staff/Index/@Model.CareHomesId">Manage Staff For This Health Care</a></h1>
     <div
         <hr />
     </div>
@@ -20,12 +20,8 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
-    @await Html.PartialAsync("../AddressDetails/Details.cshtml", Model.AddressDetails)
-    @await Html.PartialAsync("../ContactDetails/Details.cshtml", Model.ContactInfo)
-
-    <div>
-        <a class="class=" btn btn-danger"" href="~/Staff/Index/@Model.CareHomesId">Manage Staff For This Health Care</a>
-    </div>
+    @await Html.PartialAsync("../AddressDetails/Details.cshtml", Model.AddressDetails,ViewData)
+    @await Html.PartialAsync("../ContactDetails/Details.cshtml", Model.ContactInfo,ViewData)
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.CareHomesId">Edit</a> |

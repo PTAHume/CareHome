@@ -175,12 +175,14 @@ namespace CareHome.Controllers
             {
                 return NotFound();
             }
+            ViewData["JobTId"] = staff.JobTitlesId;
+            ViewData["DepId"] = staff.DepartmentId;
             ViewData["AddressDetailsId"] = new SelectList(_context.AddressDetails, "AddressDetailsId", "NumberStreetName", staff.AddressDetailsId);
             ViewData["ContactDetailsId"] = new SelectList(_context.ContactDetails, "ContactDetailsId", "ContactName", staff.ContactDetailsId);
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "Description", staff.DepartmentId);
+            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "Name", staff.DepartmentId);
             ViewData["EthnicityGroupsId"] = new SelectList(_context.EthnicityGroups, "EthnicityGroupsId", "GroupName", staff.EthnicityGroupsId);
             ViewData["GenderTypesId"] = new SelectList(_context.GenderTypes, "GenderTypesId", "Gender", staff.GenderTypesId);
-            ViewData["JobTitlesId"] = new SelectList(_context.JobTitles, "JobTitlesId", "Description", staff.JobTitlesId);
+            ViewData["JobTitlesId"] = new SelectList(_context.JobTitles, "JobTitlesId", "Title", staff.JobTitlesId);
             return View(staff);
         }
 

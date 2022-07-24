@@ -18,6 +18,10 @@
       "provider": "jsdelivr",
       "library": "tablesorter@2.31.3",
       "destination": "wwwroot/lib/tablesorter/"
+    },
+    {
+      "library": "slick-carousel@1.8.1",
+      "destination": "wwwroot/lib/slick/slick-carousel/"
     }
   ]
 }

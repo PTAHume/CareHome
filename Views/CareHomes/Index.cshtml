@@ -27,17 +27,19 @@
     <tbody>
         @foreach (var item in Model)
         {
+            ViewData["ItemID"] = item.CareHomesId;
+
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" class="DisplayAddressDetail">view</a>
+                    <a href="javascript:void(0);" data-id="@item.CareHomesId" rel="modal:open" class="DisplayAddressDetail">view</a>
                     @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" class="DisplayContactDetails">view</a>
-                    @await Html.PartialAsync("../ContactDetails/Index.cshtml", item.ContactInfo)
+                    <a href="javascript:void(0);" data-id="@item.CareHomesId" rel="modal:open" class="DisplayContactDetails">view</a>
+                    @await Html.PartialAsync("../ContactDetails/Index.cshtml", item.ContactInfo, ViewData)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.CareHomesId">Edit</a> |

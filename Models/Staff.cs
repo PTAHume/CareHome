@@ -33,10 +33,12 @@ namespace CareHome.Models
 
         public GenderTypes? Gender { get; set; }
 
+        [Display(Name = "Address")]
         public int? AddressDetailsId { get; set; }
 
         public AddressDetails? AddressDetails { get; set; }
 
+        [Display(Name = " Contact Details")]
         public int? ContactDetailsId { get; set; }
 
         public ContactDetails? ContactInfo { get; set; }
@@ -68,6 +70,7 @@ namespace CareHome.Models
 
         public ICollection<Qualifications>? Qualifications { get; set; }
 
+        [Display(Name = "Care Homes Name")]
         public int? CareHomesId { get; set; }
 
         public CareHomes? CareHomes { get; set; }

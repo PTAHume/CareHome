@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using CareHome.Models;
 using CareHome.Data;
 using System.Web.Mvc;

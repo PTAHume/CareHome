@@ -1,11 +1,16 @@
 ﻿$(document).ready(function () {
     $(".modal").dialog({
+        position: {
+            my: "center",
+            at: "center",
+            of: window
+        },
         autoOpen: false,
         resizable: true,
         width: '80%',
     });
 
-    var $table = $('.tableSorter'),
+    let $table = $(".tableSorter"),
         // define pager options
         pagerOptions = {
             // target the pager markup - see the HTML block below
@@ -45,18 +50,41 @@
         gotoCurrent: true,
         highlightWeek: true,
         maxDate: new Date(Date.now())
-    }).datepicker("setDate", new Date($(".datepicker").val() === '01-Jan-0001' ? Date.now : $(".datepicker").val()));
+    }).datepicker("setDate", new Date($(".datepicker").val() === "01-Jan-0001" ? Date.now : $(".datepicker").val()));
 
+    if ($("select[data-rule-hasSelection]").length > 0) {
+        $.validator.addMethod("hasSelection", function (value, element) {
+            let message = $("#" + element.id).parents("div.form-group").find("label").text();
+            $.validator.messages["hasSelection"] = `The ${message} field is required.`
+            return value !== "-1";
+        });
+    }
 
+    $(".autoplay").slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+    });
+
+    if ($(location).attr('pathname') === "/") {
+        $("body").addClass("Index");
+    } else {
+        $("body").removeClass("Index");
+    }
+
+    if ($(".tablesorter-ignoreRow").length > 0) {
+        $(".tablesorter-ignoreRow").find("td")[0].innerHTML = "Filters" + $(".tablesorter-ignoreRow").find("td")[0].innerHTML;
+    }
 
     $(".DisplayContactDetails").on("click", function (e) {
-        e.preventDefault();
-        // $(".modal").dialog("close");
+        e.preventDefault
+        $(".modal").dialog("close");
         $("div").find(`[data-Contact-details-table='${$(this).attr('data-id')}']`).dialog("open");
     });
     $(".DisplayAddressDetail").on("click", function (e) {
         e.preventDefault();
-        // $(".modal").dialog("close");
+        $(".modal").dialog("close");
         $("div").find(`[data-address-details-table='${$(this).attr('data-id')}']`).dialog("open");
     });
     $("#Department").change(function () {

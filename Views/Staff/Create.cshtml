@@ -48,14 +48,14 @@
                 <select asp-for="CareHomesId" class="form-control" asp-items="ViewBag.CareHomesId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Department.DepartmentId" class="control-label"></label>
-                @*<select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>*@
-                <select id="Department" asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.DepartmentId,"Value","Text"))"></select>
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select id="Department" asp-for="DepartmentId" class="form-control" data-rule-hasSelection="true" asp-items="@(new SelectList(ViewBag.DepartmentId,"Value","Text"))"></select>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JobTitlesId" class="control-label"></label>
-                @*<select asp-for="JobTitlesId" class="form-control" asp-items="ViewBag.JobTitlesId"></select>*@
-                <select id="JobTitle" asp-for="JobTitlesId" class="form-control" asp-items="@(new SelectList(string.Empty, "Value", "Text"))"></select>
+                <select id="JobTitle" asp-for="JobTitlesId" class="form-control" data-rule-hasSelection="true" asp-items="@(new SelectList(string.Empty, "Value", "Text"))"></select>
+                <span asp-validation-for="JobTitlesId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Salary" class="control-label"></label>
@@ -63,7 +63,7 @@
                 <span asp-validation-for="Salary" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h4>AddressDetails</h4>
+                <h4>Address Details</h4>
                 <hr />
             </div>
             <div class="form-group">
@@ -87,7 +87,7 @@
                 <span asp-validation-for="AddressDetails.Postcode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h4>ContactInfo</h4>
+                <h4>Contact Details</h4>
                 <hr />
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
