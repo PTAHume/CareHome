@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'mydockeragent'
+  vmImage: mydockeragent
 
 variables:
   solution: '**/*.sln'
