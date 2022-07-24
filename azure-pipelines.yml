@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'Git-Hook-Agent'
+  vmImage: mydockeragent
 
 variables:
   solution: '**/*.sln'
