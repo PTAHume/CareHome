@@ -8,7 +8,7 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-  name: 'Git-Hook-Agent'
+  name: 'mydockeragent'
 
 variables:
   solution: '**/*.sln'
