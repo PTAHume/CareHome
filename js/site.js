@@ -1,24 +1,100 @@
 ﻿$(document).ready(function () {
-    $(".ContactInfoTable").dialog({
-        autoOpen: false,
-        width: '80%',
-        icon: "ui-icon-heart",
-        closeClass: 'icon-remove',
-    });
-    $(".AddressDetailsTable").dialog({
+    $(".modal").dialog({
+        position: {
+            my: "center",
+            at: "center",
+            of: window
+        },
         autoOpen: false,
         resizable: true,
         width: '80%',
     });
 
-    $("#DisplayContactDetails").on("click", function (e) {
-        e.preventDefault();
-        $(".AddressDetailsTable").dialog("close");
-        $(".ContactInfoTable").dialog("open");
+    let $table = $(".tableSorter"),
+        // define pager options
+        pagerOptions = {
+            // target the pager markup - see the HTML block below
+            container: $(".pager"),
+            // output string - default is '{page}/{totalPages}';
+            // possible variables: {size}, {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+            // also {page:input} & {startRow:input} will add a modifiable input in place of the value
+            output: '{startRow} - {endRow} / {filteredRows} ({totalRows})',
+            // if true, the table will remain the same height no matter how many records are displayed. The space is made up by an empty
+            // table row set to a height to compensate; default is false
+            fixedHeight: true,
+            // remove rows from the table to speed up the sort of large tables.
+            // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+            removeRows: false,
+            // go to page selector - select dropdown that sets the current page
+            cssGoto: '.gotoPage'
+        };
+
+    $table
+        .tablesorter({
+            theme: 'blue',
+            headerTemplate: '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
+            widthFixed: true,
+            widgets: ['zebra', 'filter'],
+        })
+
+        // initialize the pager plugin
+        // ****************************
+        .tablesorterPager(pagerOptions);
+
+    $(".datepicker").datepicker({
+        value: new Date(2013, 10, 10),
+        dateFormat: "dd-M-yy",
+        showStatus: true,
+        showWeeks: true,
+        autoSize: true,
+        gotoCurrent: true,
+        highlightWeek: true,
+        maxDate: new Date(Date.now())
+    }).datepicker("setDate", new Date($(".datepicker").val() === "01-Jan-0001" ? Date.now : $(".datepicker").val()));
+
+    if ($("select[data-rule-hasSelection]").length > 0) {
+        $.validator.addMethod("hasSelection", function (value, element) {
+            let message = $("#" + element.id).parents("div.form-group").find("label").text();
+            $.validator.messages["hasSelection"] = `The ${message} field is required.`
+            return value !== "-1";
+        });
+    }
+
+    $(".autoplay").slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
     });
-    $("#DisplayAddressDetail").on("click", function (e) {
-        e.preventDefault();
-        $(".AddressDetailsTable").dialog("open");
-        $(".ContactInfoTable").dialog("close");
+
+    if ($(location).attr('pathname') === "/") {
+        $("body").addClass("Index");
+    } else {
+        $("body").removeClass("Index");
+    }
+
+    if ($(".tablesorter-ignoreRow").length > 0) {
+        $(".tablesorter-ignoreRow").find("td")[0].innerHTML = "Filters" + $(".tablesorter-ignoreRow").find("td")[0].innerHTML;
+    }
+
+    $(".DisplayContactDetails").on("click", function (e) {
+        e.preventDefault
+        $(".modal").dialog("close");
+        $("div").find(`[data-Contact-details-table='${$(this).attr('data-id')}']`).dialog("open");
     });
+    $(".DisplayAddressDetail").on("click", function (e) {
+        e.preventDefault();
+        $(".modal").dialog("close");
+        $("div").find(`[data-address-details-table='${$(this).attr('data-id')}']`).dialog("open");
+    });
+    $("#Department").change(function () {
+        $.getJSON("/Staff/GetJobList", { DepartmentId: parseInt($("#Department").val()) }, function (data) {
+            let row = "";
+            $("#JobTitle").empty();
+            $.each(data, function (index, item) {
+                row += "<option value=" + item.value + ">" + item.text + "</option>";
+            });
+            $("#JobTitle").html(row);
+        })
+    })
 });
