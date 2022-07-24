@@ -12,11 +12,11 @@ namespace CareHome.Controllers
     public class StaffController : Controller
     {
         private readonly CareHomeContext _context;
-        private readonly IMemoryCache _MemoryCache;
-        public StaffController(CareHomeContext context, IMemoryCache memoryCache)
+
+        public StaffController(CareHomeContext context)
         {
             _context = context;
-            _MemoryCache = memoryCache;
+
         }
 
         // GET: Staffs
