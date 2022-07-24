@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="AttainmentDate" class="control-label"></label>
-                <input asp-for="AttainmentDate" class="form-control" />
+                @Html.EditorFor(model => model.AttainmentDate, new { htmlAttributes = new {  Value = Model.AttainmentDate.ToString("{0:dd-MMM-yyyy}"), @class = "form-control datepicker",  @type = "text", @id = "AttainmentDate" } })
                 <span asp-validation-for="AttainmentDate" class="text-danger"></span>
             </div>
             <div class="form-group">

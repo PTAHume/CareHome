@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHome.Migrations
 {
     [DbContext(typeof(CareHomeContext))]
-    [Migration("20220723143650_InitialCreate")]
+    [Migration("20220723213057_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,7 @@ namespace CareHome.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
-                    b.Property<string>("PostCode")
+                    b.Property<string>("Postcode")
                         .IsRequired()
                         .HasMaxLength(16)
                         .HasColumnType("VARCHAR(16)");
@@ -98,10 +98,10 @@ namespace CareHome.Migrations
 
                     b.Property<string>("ContactName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("EMail")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
@@ -316,7 +316,6 @@ namespace CareHome.Migrations
                         .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("MiddleNames")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 

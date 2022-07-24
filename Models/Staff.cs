@@ -20,7 +20,7 @@ namespace CareHome.Models
         [Display(Name = "Middle Names")]
         [Column(TypeName = "VARCHAR(256)")]
         [StringLength(256, MinimumLength = 2)]
-        public string MiddleNames { get; set; }
+        public string? MiddleNames { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
@@ -47,8 +47,8 @@ namespace CareHome.Models
         public EthnicityGroups? Ethnicity { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Of Birth")]
-
         public DateTime DOB { get; set; }
 
         [Display(Name = "Department")]

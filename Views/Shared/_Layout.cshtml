@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.structure.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CareHome.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/tablesorter/dist/css/theme.dark.min.css" />
+    <link rel="stylesheet" href="~/lib/tablesorter/dist/css/jquery.tablesorter.pager.css" />
 </head>
 <body>
     <header>
@@ -48,6 +50,13 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.js"></script>
+    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.widgets.js"></script>
+    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.pager.js"></script>
+
+
+
+    <script type="text/javascript" src="/path/to/jquery.tablesorter.widgets.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

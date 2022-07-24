@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using CareHome.Models;
 using CareHome.Data;
-
+using System.Web.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CareHomeContext>(options =>
@@ -40,5 +40,11 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "Default",
+    pattern: "{controller}/{action}/{id}",
+    defaults: new { culture = "en-GB", controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
 
 app.Run();

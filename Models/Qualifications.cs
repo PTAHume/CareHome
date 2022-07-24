@@ -38,7 +38,7 @@ namespace CareHome.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Date Obtained")]
-        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime AttainmentDate { get; set; }
 
         public int? StaffId { get; set; }

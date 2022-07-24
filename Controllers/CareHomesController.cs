@@ -27,9 +27,9 @@ namespace CareHome.Controllers
         }
 
         // GET: CareHomes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? Id)
         {
-            if (id == null || _context.CareHomes == null)
+            if (Id == null || _context.CareHomes == null)
             {
                 return NotFound();
             }
@@ -37,7 +37,7 @@ namespace CareHome.Controllers
             var careHomes = await _context.CareHomes
                 .Include(c => c.AddressDetails)
                 .Include(c => c.ContactInfo)
-                .FirstOrDefaultAsync(m => m.CareHomesId == id);
+                .FirstOrDefaultAsync(m => m.CareHomesId == Id);
             if (careHomes == null)
             {
                 return NotFound();
@@ -82,14 +82,14 @@ namespace CareHome.Controllers
         }
 
         // GET: CareHomes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? Id)
         {
-            if (id == null || _context.CareHomes == null)
+            if (Id == null || _context.CareHomes == null)
             {
                 return NotFound();
             }
 
-            CareHomes careHomes = await _context.CareHomes.FindAsync(id);
+            CareHomes careHomes = await _context.CareHomes.FindAsync(Id);
             if (careHomes == null)
             {
                 return NotFound();
@@ -107,9 +107,9 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CareHomesId,Name,AddressDetails,ContactInfo,AddressDetailsId, ContactDetailsId")] CareHomes careHomes)
+        public async Task<IActionResult> Edit(int Id, [Bind("CareHomesId,Name,AddressDetails,ContactInfo,AddressDetailsId, ContactDetailsId")] CareHomes careHomes)
         {
-            if (id != careHomes.CareHomesId)
+            if (Id != careHomes.CareHomesId)
             {
                 return NotFound();
             }
@@ -140,9 +140,9 @@ namespace CareHome.Controllers
         }
 
         // GET: CareHomes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? Id)
         {
-            if (id == null || _context.CareHomes == null)
+            if (Id == null || _context.CareHomes == null)
             {
                 return NotFound();
             }
@@ -150,7 +150,7 @@ namespace CareHome.Controllers
             var careHomes = await _context.CareHomes
                 .Include(c => c.AddressDetails)
                 .Include(c => c.ContactInfo)
-                .FirstOrDefaultAsync(m => m.CareHomesId == id);
+                .FirstOrDefaultAsync(m => m.CareHomesId == Id);
             if (careHomes == null)
             {
                 return NotFound();
@@ -162,13 +162,13 @@ namespace CareHome.Controllers
         // POST: CareHomes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int Id)
         {
             if (_context.CareHomes == null)
             {
                 return Problem("Entity set 'CareHomeContext.CareHomes'  is null.");
             }
-            var careHomes = await _context.CareHomes.FindAsync(id);
+            var careHomes = await _context.CareHomes.FindAsync(Id);
             if (careHomes != null)
             {
                 _context.CareHomes.Remove(careHomes);
@@ -178,9 +178,9 @@ namespace CareHome.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CareHomesExists(int id)
+        private bool CareHomesExists(int Id)
         {
-            return (_context.CareHomes?.Any(e => e.CareHomesId == id)).GetValueOrDefault();
+            return (_context.CareHomes?.Any(e => e.CareHomesId == Id)).GetValueOrDefault();
         }
     }
 }

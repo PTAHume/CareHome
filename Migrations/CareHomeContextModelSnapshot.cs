@@ -39,7 +39,7 @@ namespace CareHome.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
-                    b.Property<string>("PostCode")
+                    b.Property<string>("Postcode")
                         .IsRequired()
                         .HasMaxLength(16)
                         .HasColumnType("VARCHAR(16)");
@@ -96,10 +96,10 @@ namespace CareHome.Migrations
 
                     b.Property<string>("ContactName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("EMail")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 
@@ -314,7 +314,6 @@ namespace CareHome.Migrations
                         .HasColumnType("VARCHAR(256)");
 
                     b.Property<string>("MiddleNames")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("VARCHAR(256)");
 

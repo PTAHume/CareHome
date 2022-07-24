@@ -5,6 +5,19 @@
     {
       "library": "jqueryui@1.12.1",
       "destination": "wwwroot/lib/jqueryui/"
+    },
+    {
+      "library": "tablesort@5.2.1",
+      "destination": "wwwroot/lib/NewFolder/tablesort/"
+    },
+    {
+      "library": "jquery.tablesorter@2.31.3",
+      "destination": "wwwroot/lib/jquery.tablesorter/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "tablesorter@2.31.3",
+      "destination": "wwwroot/lib/tablesorter/"
     }
   ]
 }
