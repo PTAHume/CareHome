@@ -4,17 +4,26 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
-
+- maste
+   
 pool:
-  vmImage: ubuntu-latest
-
+  vmImage: 'ubuntu-latest'
+   
 variables:
+  imageName: 'mydockeragent'
+  DOCKER_BUILDKIT: 1
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-
+   
 steps:
+- task: Docker@2
+  displayName: mydockeragent
+  inputs:
+    repository: $(imageName)
+    command: build
+    Dockerfile: app/Dockerfile
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
