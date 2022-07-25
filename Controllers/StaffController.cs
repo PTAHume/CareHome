@@ -170,7 +170,13 @@ namespace CareHome.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff.Include(s => s.CareHomes).FirstOrDefaultAsync(x => x.StaffId == Id);
+            var staff = await _context.Staff
+                .Include(s => s.CareHomes)
+                .Include(s => s.AddressDetails)
+                .Include(s => s.ContactInfo)
+                .Include(s => s.Department)
+                .FirstOrDefaultAsync(x => x.StaffId == Id);
+
             if (staff == null)
             {
                 return NotFound();
@@ -191,7 +197,7 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int Id, [Bind("StaffId,Forename,MiddleNames,LastName,GenderTypesId,AddressDetailsId,ContactDetailsId,EthnicityGroupsId,DOB,DepartmentId,JobTitlesId,Salary,CareHomesId")] Staff staff)
+        public async Task<IActionResult> Edit(int Id, [Bind("StaffId,Forename,MiddleNames,LastName,GenderTypesId,AddressDetailsId,ContactDetailsId,AddressDetails,ContactInfo,EthnicityGroupsId,DOB,DepartmentId,JobTitlesId,Salary,CareHomesId")] Staff staff)
         {
             if (Id != staff.StaffId)
             {

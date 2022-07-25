@@ -37,14 +37,59 @@
                 <span asp-validation-for="GenderTypesId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AddressDetailsId" class="control-label"></label>
-                <select asp-for="AddressDetailsId" class="form-control" asp-items="ViewBag.AddressDetailsId"></select>
-                <span asp-validation-for="AddressDetailsId" class="text-danger"></span>
+                <p></p>
+                <h4>Address Details</h4>
+                <hr />
+            </div>
+            <input type="hidden" asp-for="AddressDetailsId" />
+            <input type="hidden" asp-for="AddressDetailsId" />
+            <div class="form-group">
+                <label asp-for="AddressDetails.NumberStreetName" class="control-label"></label>
+                <input asp-for="AddressDetails.NumberStreetName" class="form-control" />
+                <span asp-validation-for="AddressDetails.NumberStreetName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactDetailsId" class="control-label"></label>
-                <select asp-for="ContactDetailsId" class="form-control" asp-items="ViewBag.ContactDetailsId"></select>
-                <span asp-validation-for="ContactDetailsId" class="text-danger"></span>
+                <label asp-for="AddressDetails.Locality" class="control-label"></label>
+                <input asp-for="AddressDetails.Locality" class="form-control" />
+                <span asp-validation-for="AddressDetails.Locality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressDetails.Town" class="control-label"></label>
+                <input asp-for="AddressDetails.Town" class="form-control" />
+                <span asp-validation-for="AddressDetails.Town" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressDetails.Postcode" class="control-label"></label>
+                <input asp-for="AddressDetails.Postcode" class="form-control" />
+                <span asp-validation-for="AddressDetails.Postcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p></p>
+                <h4>Contact Details</h4>
+                <hr />
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ContactDetailsId" />
+            <input type="hidden" asp-for="ContactDetailsId" />
+            <div class="form-group">
+                <label asp-for="ContactInfo.ContactName" class="control-label"></label>
+                <input asp-for="ContactInfo.ContactName" class="form-control" />
+                <span asp-validation-for="ContactInfo.ContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactInfo.PrimaryNumber" class="control-label"></label>
+                <input asp-for="ContactInfo.PrimaryNumber" class="form-control" />
+                <span asp-validation-for="ContactInfo.PrimaryNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactInfo.SecondaryNumber" class="control-label"></label>
+                <input asp-for="ContactInfo.SecondaryNumber" class="form-control" />
+                <span asp-validation-for="ContactInfo.SecondaryNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactInfo.EMail" class="control-label"></label>
+                <input asp-for="ContactInfo.EMail" class="form-control" />
+                <span asp-validation-for="ContactInfo.EMail" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EthnicityGroupsId" class="control-label"></label>
