@@ -73,6 +73,7 @@ namespace CareHome.Models
         [Display(Name = "Care Homes Name")]
         public int? CareHomesId { get; set; }
 
+        [Display(Name = "Care Homes Name")]
         public CareHomes? CareHomes { get; set; }
     }
 }

@@ -27,26 +27,27 @@
         cssGoto: '.gotoPage'
     };
 
+    if ($('.tablesorter').find("#data-edit").length) {
 
-    $(".tableSorter").tablesorter({
-        theme: 'jui',
-        showProcessing: true,
-        headerTemplate: '{content} {icon}',
-        widgets: ['uitheme', 'zebra', 'filter', 'scroller'],
-        widgetOptions: {
-            scroller_height: 300,
-            // scroll tbody to top after sorting
-            scroller_upAfterSort: true,
-            // pop table header into view while scrolling up the page
-            scroller_jumpToHeader: true,
-            // In tablesorter v2.19.0 the scroll bar width is auto-detected
-            // add a value here to override the auto-detected setting
-            scroller_barWidth: null
-            // scroll_idPrefix was removed in v2.18.0
-            // scroller_idPrefix : 's_'
-        }
-    }).tablesorterPager(pagerOptions);
-
+        $('.tablesorter').tablesorter({
+            theme: 'blue',
+            showProcessing: true,
+            headerTemplate: '{content} {icon}',
+            widgets: ['uitheme', 'zebra', 'resizable', 'filter', 'scroller'],
+            widgetOptions: {
+                scroller_height: 300,
+                // scroll tbody to top after sorting
+                scroller_upAfterSort: true,
+                // pop table header into view while scrolling up the page
+                scroller_jumpToHeader: true,
+                // In tablesorter v2.19.0 the scroll bar width is auto-detected
+                // add a value here to override the auto-detected setting
+                scroller_barWidth: null,
+            }
+        }).tablesorterPager(pagerOptions);
+    } else {
+        $(".pagesize").attr('disabled', true);;
+    }
 
     $(".datepicker").datepicker({
         value: new Date(2013, 10, 10),

@@ -4,16 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Care Home</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.min.css">
-    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.theme.min.css">
-    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.structure.min.css">
-    <link rel="stylesheet" href="~/lib/tablesorter/dist/css/theme.dark.min.css" />
+    <link rel=“icon” href=”~/favicon.ico” type=“image/x-icon” />
+    <link rel=“shortcut icon” href=“~/favicon.ico” type=“image/x-icon” />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.theme.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.structure.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/lib/tablesorter/dist/css/theme.blue.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CareHome.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/tablesorter/dist/css/jquery.tablesorter.pager.css" />
-    <link rel="stylesheet" href="~/lib/slick-carousel/slick.css" />
-    <link rel="stylesheet" href="~/lib/slick-carousel/slick-theme.css" />
+    <link rel="stylesheet" href="~/lib/tablesorter/dist/css/jquery.tablesorter.pager.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/slick-carousel/slick.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/slick-carousel/slick-theme.css" asp-append-version="true" />
 </head>
 <body class="Index">
     <header>
@@ -41,15 +43,15 @@
             &copy; 2022 - CareHome - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.js"></script>
-    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.widgets.js"></script>
-    <script src="~/lib/tablesorter/dist/js/widgets/widget-scroller.min.js"></script>
-    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.pager.js"></script>
-    <script src="~/lib/slick-carousel/slick.min.js"></script>
+    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.js" asp-append-version="true"></script>
+    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.widgets.js" asp-append-version="true"></script>
+    <script src="~/lib/tablesorter/dist/js/widgets/widget-scroller.min.js" asp-append-version="true"></script>
+    <script src="~/lib/tablesorter/dist/js/jquery.tablesorter.pager.js" asp-append-version="true"></script>
+    <script src="~/lib/slick-carousel/slick.min.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

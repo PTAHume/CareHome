@@ -30,7 +30,7 @@
     </form>
 </div>
 
-<table class="table tableSorter">
+<table class="table tablesorter">
     <thead>
         <tr>
             <th>
@@ -101,7 +101,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CareHomes.Name)
                 </td>
-                <td>
+                <td id="data-edit">
                     <a asp-action="Edit" asp-route-id="@item.StaffId">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.StaffId">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.StaffId">Delete</a>
