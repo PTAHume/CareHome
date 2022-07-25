@@ -84,7 +84,12 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="StaffId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index" asp-route-id="@Model?.CareHomesId">Back to List</a>
-        <a href="~/carehomes/Index/@Model.CareHomesId">Back To Care Home</a>
+        <a asp-action="Index" class="btn btn-warning" asp-route-id="@Model?.CareHomesId">Cancel</a>
+
     </form>
 </div>
+<div>
+    <p></p>
+    <a href="~/carehomes/Index/@Model.CareHomesId">Back To Care Home</a>
+</div>
+

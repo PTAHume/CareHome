@@ -36,16 +36,16 @@
                 <span asp-validation-for="AttainmentDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <p></p>
+                <input type="submit" value="Save" class="btn btn-primary" /> | <a class="btn btn-warning" href="~/Qualifications/Index/@Model.StaffId">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a href="~/Qualifications/Index/@Model.StaffId">Back Qualifications List</a>| <br />
-    <a href="~/Staff/Details/@Model.StaffId">Back To Staff Details</a>| <br />
-    <a href="~/Staff/Index/@Model.Staff.CareHomesId">Back To Staff Page</a>| <br />
+    <p></p>
+    <a href="~/Staff/Details/@Model.StaffId">Back To Staff Details</a> | <a href="~/Staff/Index/@Model.Staff.CareHomesId">Back To Staff Page</a>
 </div>
 
 @section Scripts {

@@ -41,9 +41,11 @@
 
     <form method="post">
         <input type="hidden" asp-for="QualificationsId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a href="~/Qualifications/Index/@Model.StaffId">Back Qualifications List</a> |
-        <a href="~/Staff/Details/@Model.StaffId">Back To Staff Details</a> |
-        <a href="~/Staff/Index/@Model.Staff.CareHomesId">Back To Staff Page</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> | <a class="btn btn-warning" href="~/Qualifications/Index/@Model.StaffId">Cancel</a>
     </form>
+</div>
+<div>
+    <p></p>
+    <a href="~/Staff/Details/@Model.StaffId">Back To Staff Details</a> |
+    <a href="~/Staff/Index/@Model.Staff.CareHomesId">Back To Staff Page</a>
 </div>

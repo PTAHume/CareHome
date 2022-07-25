@@ -4,6 +4,7 @@
     <h4>
         Qualifications For:  @Html.DisplayFor(model => model.Staff.Forename) @Html.DisplayFor(model => model.Staff.MiddleNames)  @Html.DisplayFor(model => model.Staff.LastName)
     </h4>
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -38,10 +39,9 @@
         </dd>
     </dl>
     <input type="hidden" asp-for="QualificationsId" />
+    <a class="btn btn-primary" href="~/Qualifications/Edit/@Model.QualificationsId">Edit</a> |  <a class="btn btn-warning" href="~/Qualifications/Index/@Model.StaffId">Cancel</a>
 </div>
 <div>
-    <a href="~/Qualifications/Edit/@Model.QualificationsId">Edit</a>| <br />
-    <a href="~/Qualifications/Index/@Model.StaffId">Back Qualifications List</a>| <br />
-    <a href="~/Staff/Details/@Model.StaffId">Back To Staff Details</a>| <br />
-    <a href="~/Staff/Index/@Model.Staff.CareHomesId">Back To Staff Page</a>| <br />
+    <p></p>
+    <a href="~/Staff/Details/@Model.StaffId">Back To Staff Details</a> | <a href="~/Staff/Index/@Model.Staff.CareHomesId">Back To Staff Page</a>
 </div>

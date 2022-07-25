@@ -10,6 +10,7 @@
 
 <div>
     <h4>Staff</h4>
+    <h1> <a asp-action="index" class="btn btn-info" asp-route-id="@Model?.StaffId" asp-controller="Qualifications">Manage Qualifications</a></h1>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -91,10 +92,11 @@
             @Html.DisplayFor(model => model.Salary)
         </dd>
     </dl>
-    <a asp-action="index" asp-route-id="@Model?.StaffId" asp-controller="Qualifications">Manage Qualifications</a>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.StaffId">Edit</a> |
-    <a asp-action="Index" asp-route-id="@Model?.CareHomesId">Back to List</a>
+    <p></p>
+    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.StaffId">Edit</a> | <a asp-action="Index" class="btn btn-warning" asp-route-id="@Model?.CareHomesId">Cancel</a>
+</div>
+<div>
     <a href="~/carehomes/Index/@Model.CareHomesId">Back To Care Home</a>
 </div>

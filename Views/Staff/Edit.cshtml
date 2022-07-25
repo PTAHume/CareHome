@@ -72,7 +72,9 @@
                 <span asp-validation-for="Salary" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" id="submit" value="Save" class="btn btn-primary" />
+                <p></p>
+                <input type="submit" id="submit" value="Save" class="btn btn-primary" /> |  <a asp-action="Index" class="btn btn-warning" asp-route-id="@Model?.CareHomesId">Cancel</a>
+
             </div>
         </form>
 
@@ -80,7 +82,7 @@
 </div>
 
 <div>
-    <a asp-action="Index" asp-route-id="@Model?.CareHomesId">Back to List</a>
+    <p></p>
     <a href="~/carehomes/Index/@Model.CareHomesId">Back To Care Home</a>
 </div>
 
