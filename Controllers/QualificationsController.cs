@@ -65,14 +65,17 @@ namespace CareHome.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QualificationsId,QualificationType,Name,Grade,InstitutionalName,AttainmentDate,StaffId")] Qualifications qualifications)
+        public async Task<IActionResult> Create([Bind("QualificationsId,QualificationType,Name,Grade,InstitutionalName,AttainmentDate,StaffId,Staff")] Qualifications qualifications)
         {
+            qualifications.Staff = _context.Staff.Include(s => s.CareHomes).First(x => x.StaffId == qualifications.StaffId);
+
             if (ModelState.IsValid)
             {
                 _context.Add(qualifications);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index), new { Id = qualifications.StaffId });
             }
+
             return View(qualifications);
         }
 
