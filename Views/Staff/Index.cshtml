@@ -11,6 +11,25 @@
 <p>
     <a asp-action="Create" asp-route-id="@Model.First().CareHomesId">Create New</a>
 </p>
+
+<div id="pager" class="pager">
+    <form>
+        <img src="~/lib/tablesorter/dist/css/images/next.png" class="first" />
+        <img src="~/lib/tablesorter/dist/css/images/prev.png" class="prev" />
+        <!-- the "pagedisplay" can be any element, including an input -->
+        <span class="pagedisplay" data-pager-output-filtered="{startRow:input} &ndash; {endRow} / {filteredRows} of {totalRows} total rows"></span>
+        <img src="~/lib/tablesorter/dist/css/images/next.png" class="next" />
+        <img src="~/lib/tablesorter/dist/css/images/last.png" class="last" />
+        <select class="pagesize">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="all">All Rows</option>
+        </select>
+    </form>
+</div>
+
 <table class="table tableSorter">
     <thead>
         <tr>
@@ -23,10 +42,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
-            <th>
+            <th data-sorter="false" data-filter="false">
                 @Html.DisplayNameFor(model => model.AddressDetails)
             </th>
-            <th>
+            <th data-sorter="false" data-filter="false">
                 @Html.DisplayNameFor(model => model.ContactInfo)
             </th>
             <th>
@@ -38,13 +57,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.JobTitle)
             </th>
-            <th>
+            <th data-sorter="false" data-filter="false">
                 @Html.DisplayNameFor(model => model.CareHomes)
             </th>
             <th data-sorter="false" data-filter="false"></th>
         </tr>
     </thead>
+
     <tbody>
+
         @foreach (var item in Model.Where(x => x.CareHomesId == int.Parse(ViewData["Id"].ToString())))
         {
 
@@ -89,23 +110,6 @@
         }
     </tbody>
 </table>
+
 <a href="~/Staff/Index/@Model.FirstOrDefault().CareHomesId">Back To Care Home</a>
 
-<!-- pager -->
-<div id="pager" class="pager">
-    <form>
-        <img src="~/lib/tablesorter/dist/css/images/next.png" class="first" />
-        <img src="~/lib/tablesorter/dist/css/images/prev.png" class="prev" />
-        <!-- the "pagedisplay" can be any element, including an input -->
-        <span class="pagedisplay" data-pager-output-filtered="{startRow:input} &ndash; {endRow} / {filteredRows} of {totalRows} total rows"></span>
-        <img src="~/lib/tablesorter/dist/css/images/next.png" class="next" />
-        <img src="~/lib/tablesorter/dist/css/images/last.png" class="last" />
-        <select class="pagesize">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="all">All Rows</option>
-        </select>
-    </form>
-</div>
