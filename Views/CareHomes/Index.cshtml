@@ -27,18 +27,23 @@
     <tbody>
         @foreach (var item in Model)
         {
-            ViewData["ItemID"] = item.CareHomesId;
 
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" data-id="@item.AddressDetailsId" rel="modal:open" id="DisplayAddressDetail">view</a>
+                    @{
+                        ViewData["ItemID"] = "AddressId_" + item.AddressDetailsId.ToString();
+                    }
+                    <a href="javascript:void(0);" data-id="@ViewData["ItemID"]" rel="modal:open" id="DisplayAddressDetail">view</a>
                     @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" data-id="@item.CareHomesId" rel="modal:open" class="DisplayContactDetails">view</a>
+                    @{
+                        ViewData["ItemID"] = "ContactId_" + item.ContactDetailsId.ToString();
+                    }
+                    <a href="javascript:void(0);" data-id="@ViewData["ItemID"]" rel="modal:open" class="DisplayContactDetails">view</a>
                     @await Html.PartialAsync("../ContactDetails/Index.cshtml", item.ContactInfo, ViewData)
                 </td>
                 <td>

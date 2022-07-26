@@ -68,9 +68,6 @@
 
         @foreach (var item in Model.Where(x => x.CareHomesId == int.Parse(ViewData["Id"].ToString())))
         {
-
-            ViewData["ItemID"] = item.StaffId;
-
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Forename)
@@ -82,11 +79,17 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" id="DisplayAddressDetail" data-id="@item.StaffId">view</a>
+                    @{
+                        ViewData["ItemID"] = "AddressId_" + item.AddressDetails.AddressDetailsId.ToString();
+                    }
+                    <a href="javascript:void(0);" rel="modal:open" id="DisplayAddressDetail" data-id="@ViewData["ItemID"]">view</a>
                     @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" data-id="@item.StaffId" class="DisplayContactDetails">view</a>
+                    @{
+                        ViewData["ItemID"] = "ContactId_" + item.ContactInfo.ContactDetailsId.ToString();
+                    }
+                    <a href="javascript:void(0);" rel="modal:open" data-id="@ViewData["ItemID"]" class="DisplayContactDetails">view</a>
                     @await Html.PartialAsync("../ContactDetails/Index.cshtml", item.ContactInfo,ViewData)
                 </td>
                 <td>
