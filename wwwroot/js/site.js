@@ -46,7 +46,7 @@
             }
         }).tablesorterPager(pagerOptions);
     } else {
-        $(".pagesize").attr('disabled', true);;
+        $(".pagesize").attr('disabled', true);
     }
 
     $(".datepicker").datepicker({
