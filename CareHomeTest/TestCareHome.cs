@@ -147,11 +147,11 @@ namespace CareHomeTest
         public async Task Create_Returns_InvalidModel()
         {
             // Arrange & Act
-            var controller = new QualificationsController(_context);
+            var controller = new StaffController(_context);
             controller.ModelState.AddModelError("error", "some error");
 
             // Act
-            var result = await controller.Create(new Qualifications());
+            var result = await controller.Create(new Staff());
 
             // Assert
             Assert.False(controller.ModelState.IsValid);
