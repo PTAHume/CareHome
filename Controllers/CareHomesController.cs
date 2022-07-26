@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -168,9 +166,42 @@ namespace CareHome.Controllers
             {
                 return Problem("Entity set 'CareHomeContext.CareHomes'  is null.");
             }
-            var careHomes = await _context.CareHomes.FindAsync(Id);
+
+
             if (careHomes != null)
             {
+                AddressDetails address = await _context.AddressDetails
+                .Include(s => s.CareHomes)
+                .Where(s => s.CareHomes.CareHomesId == Id).FirstAsync();
+                ContactDetails contactInfo = await _context.ContactDetails
+                    .Include(s => s.CareHomes)
+                    .Where(s => s.CareHomes.CareHomesId == Id).FirstAsync();
+                CareHomes careHomes = await _context.CareHomes
+                    .Where(x => x.CareHomesId == Id).FirstAsync();
+                List<Staff> staff = await _context.Staff
+                    .Include(s => s.AddressDetails)
+                    .Include(s => s.ContactInfo)
+                    .Where(x => x.CareHomesId == Id).ToListAsync();
+                List<Qualifications> qualifications = await _context.Qualifications
+                    .Include(s => s.Staff)
+                    .Include(s => s.Staff.CareHomes)
+                    .Where(x => x.Staff.CareHomesId == Id).ToListAsync();
+                List<AddressDetails> address2 = await _context.Staff
+                    .Include(s => s.AddressDetails)
+                    .Where(x => x.CareHomesId == Id)
+                    .Select(s => s.AddressDetails).ToListAsync();
+                List<ContactDetails> contact2 = await _context.Staff
+                .Include(s => s.ContactInfo)
+                .Where(x => x.CareHomesId == Id)
+                .Select(s => s.ContactInfo).ToListAsync();
+
+
+                _context.Qualifications.RemoveRange(qualifications);
+                _context.ContactDetails.RemoveRange(contact2);
+                _context.AddressDetails.RemoveRange(address2);
+                _context.Staff.RemoveRange(staff);
+                _context.ContactDetails.Remove(contactInfo);
+                _context.AddressDetails.Remove(address);
                 _context.CareHomes.Remove(careHomes);
             }
 
