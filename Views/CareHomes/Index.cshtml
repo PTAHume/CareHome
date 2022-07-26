@@ -34,7 +34,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" data-id="@item.CareHomesId" rel="modal:open" class="DisplayAddressDetail">view</a>
+                   <a href="javascript:void(0);" rel="modal:open" id="DisplayAddressDetail" data-id="@item.StaffId">view</a>
                     @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>
