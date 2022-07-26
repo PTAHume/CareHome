@@ -268,8 +268,25 @@ namespace CareHome.Controllers
                 return Problem("Entity set 'CareHomeContext.Staff'  is null.");
             }
             var staff = await _context.Staff.FindAsync(Id);
+            var addressDetails = await _context.Staff.
+                Include(s => s.AddressDetails)
+                .Where(s => s.StaffId == Id)
+                .Select(x => x.AddressDetails)
+                .FirstAsync();
+            var contactInfo = await _context.Staff.
+             Include(s => s.ContactInfo)
+             .Where(s => s.StaffId == Id)
+             .Select(x => x.ContactInfo)
+             .FirstAsync();
+
+            List<Qualifications> qualifications = await _context.Qualifications
+            .Where(s => s.StaffId == Id).ToListAsync();
+
             if (staff != null)
             {
+                _context.AddressDetails.Remove(addressDetails);
+                _context.ContactDetails.Remove(contactInfo);
+                _context.Qualifications.RemoveRange(qualifications);
                 _context.Staff.Remove(staff);
             }
 
