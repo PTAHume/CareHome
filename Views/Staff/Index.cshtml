@@ -82,9 +82,9 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    <a href="javascript:void(0);" rel="modal:open" data-id="@item.StaffId" class="DisplayContactDetails">view</a>
                     <a href="javascript:void(0);" rel="modal:open" data-id="@item.StaffId" class="DisplayAddressDetail">view</a>
-                    <a href="javascript:void(0);" rel="modal:open" data-id="@item.StaffId">view</a>
+                    <a href="javascript:void(0);" rel="modal:open" class="AddressInfo" data-id="@item.StaffId">view</a>
+                    <a href="javascript:void(0);" rel="modal:open" id="DisplayAddressDetail" data-id="@item.StaffId">view</a>
                     @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>
