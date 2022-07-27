@@ -85,7 +85,7 @@
         $(".modal").dialog("close");
         $("div").find(`[data-address-details-table='${$(this).attr('data-id')}']`).dialog("open");
     });
-    $(".DisplayContactDetails").on("click", function (e) {
+    $("#DisplayContactDetails").on("click", function (e) {
         e.preventDefault
         $(".modal").dialog("close");
         $("div").find(`[data-Contact-details-table='${$(this).attr('data-id')}']`).dialog("open");
