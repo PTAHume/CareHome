@@ -36,7 +36,7 @@
                     @{
                         ViewData["ItemID"] = "AddressId_" + item.AddressDetailsId.ToString();
                     }
-                    <a href="javascript:void(0);" data-id="@ViewData["ItemID"]" rel="modal:open" id="DisplayAddressDetail">view</a>
+                    <a href="javascript:void(0);" data-id="@ViewData["ItemID"]" rel="modal:open" class="DisplayAddressDetail">view</a>
                     @await Html.PartialAsync("../AddressDetails/Index.cshtml", item.AddressDetails,ViewData)
                 </td>
                 <td>

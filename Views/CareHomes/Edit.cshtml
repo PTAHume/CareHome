@@ -14,62 +14,10 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <p></p>
-                <h4>Address Details</h4>
-                <hr />
-            </div>
             <input type="hidden" asp-for="AddressDetailsId" />
-            <input type="hidden" asp-for="AddressDetailsId" />
-            <div class="form-group">
-                <label asp-for="AddressDetails.NumberStreetName" class="control-label"></label>
-                <input asp-for="AddressDetails.NumberStreetName" class="form-control" />
-                <span asp-validation-for="AddressDetails.NumberStreetName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressDetails.Locality" class="control-label"></label>
-                <input asp-for="AddressDetails.Locality" class="form-control" />
-                <span asp-validation-for="AddressDetails.Locality" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressDetails.Town" class="control-label"></label>
-                <input asp-for="AddressDetails.Town" class="form-control" />
-                <span asp-validation-for="AddressDetails.Town" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressDetails.Postcode" class="control-label"></label>
-                <input asp-for="AddressDetails.Postcode" class="form-control" />
-                <span asp-validation-for="AddressDetails.Postcode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <p></p>
-                <h4>Contact Details</h4>
-                <hr />
-            </div>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @await Html.PartialAsync("../AddressDetails/Edit.cshtml", Model.AddressDetails)
             <input type="hidden" asp-for="ContactDetailsId" />
-            <input type="hidden" asp-for="ContactDetailsId" />
-            <div class="form-group">
-                <label asp-for="ContactInfo.ContactName" class="control-label"></label>
-                <input asp-for="ContactInfo.ContactName" class="form-control" />
-                <span asp-validation-for="ContactInfo.ContactName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactInfo.PrimaryNumber" class="control-label"></label>
-                <input asp-for="ContactInfo.PrimaryNumber" class="form-control" />
-                <span asp-validation-for="ContactInfo.PrimaryNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactInfo.SecondaryNumber" class="control-label"></label>
-                <input asp-for="ContactInfo.SecondaryNumber" class="form-control" />
-                <span asp-validation-for="ContactInfo.SecondaryNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactInfo.EMail" class="control-label"></label>
-                <input asp-for="ContactInfo.EMail" class="form-control" />
-                <span asp-validation-for="ContactInfo.EMail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            @await Html.PartialAsync("../ContactDetails/Edit.cshtml", Model.ContactInfo)           <div class="form-group">
                 <p></p>
                 <input type="submit" value="Save" class="btn btn-primary" /> | <a class="btn btn-warning" asp-action="Index">Cancel</a>
             </div>

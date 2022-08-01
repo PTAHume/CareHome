@@ -1,0 +1,28 @@
+﻿@model CareHome.Models.ContactDetails
+<div class="form-group">
+    <h4>Contact Details</h4>
+    <hr />
+</div>
+<input type="hidden" id="ContactInfo_ContactDetailsId" name="ContactInfo.ContactDetailsId" asp-for="ContactDetailsId" />
+<div class="form-group">
+    <label asp-for="ContactName" class="control-label"></label>
+    <input asp-for="ContactName" id="ContactInfo_ContactName" name="ContactInfo.ContactName" class="form-control" />
+    <span asp-validation-for="ContactName" data-valmsg-for="ContactInfo.ContactName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="PrimaryNumber" class="control-label"></label>
+    <input asp-for="PrimaryNumber" id="ContactInfo_PrimaryNumber" name="ContactInfo.PrimaryNumber" class="form-control" />
+    <span asp-validation-for="PrimaryNumber" data-valmsg-for="ContactInfo.PrimaryNumber" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="SecondaryNumber" class="control-label"></label>
+    <input asp-for="SecondaryNumber" id="ContactInfo_SecondaryNumber" name="ContactInfo.SecondaryNumber" class="form-control" />
+    <span asp-validation-for="SecondaryNumber" data-valmsg-for="ContactInfo.SecondaryNumber" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="EMail" class="control-label"></label>
+    <input asp-for="EMail" id="ContactInfo_EMail" name="ContactInfo.EMail" class="form-control" />
+    <span asp-validation-for="EMail" data-valmsg-for="ContactInfo.EMail" class="text-danger"></span>
+</div>
+
+
