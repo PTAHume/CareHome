@@ -31,8 +31,10 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseDeveloperExceptionPage();
 app.UseRouting();
+
+
 
 app.UseAuthorization();
 

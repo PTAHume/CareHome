@@ -1,11 +1,3 @@
 {
-  "dependencies": {
-    "mssql1": {
-      "secretStore": "AzureAppSettings",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/carehome-server/databases/CareHome.data",
-      "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:CareHomeContext",
-      "dynamicId": null
-    }
-  }
+  "dependencies": {}
 }

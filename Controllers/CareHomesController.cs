@@ -1,11 +1,11 @@
-﻿using CareHome.Data;
-using CareHome.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-
-namespace CareHome.Controllers
+﻿namespace CareHome.Controllers
 {
+    using CareHome.Data;
+    using CareHome.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
+
     public class CareHomesController : Controller
     {
         private readonly CareHomeContext _context;
