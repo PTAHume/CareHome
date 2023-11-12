@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CareHome.Data;
 using CareHome.Models;
-using CareHome.Data;
-using System.Web.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CareHomeContext>(options =>
@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseManagedNetworkingOnWindows", true);
+//AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseManagedNetworkingOnWindows", true);
 
 using (var scope = app.Services.CreateScope())
 {
@@ -43,9 +43,9 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-    name: "Default",
-    pattern: "{controller}/{action}/{id}",
-    defaults: new { culture = "en-GB", controller = "Home", action = "Index", id = UrlParameter.Optional }
-);
+              name: "Default",
+              pattern: "{controller}/{action}/{id}",
+              defaults: new { culture = "en-GB", controller = "Home", action = "Index", id = "*" }
+          );
 
 app.Run();

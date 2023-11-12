@@ -1,4 +1,4 @@
-using CareHome.Controllers;
+﻿using CareHome.Controllers;
 using CareHome.Data;
 using CareHome.Models;
 using FluentAssertions;
@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Newtonsoft.Json;
-using System.Web.Mvc;
+using Assert = Xunit.Assert;
 using RedirectToActionResult = Microsoft.AspNetCore.Mvc.RedirectToActionResult;
 using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
-using Assert = Xunit.Assert;
 namespace CareHomeTest
 {
 
@@ -40,9 +39,9 @@ namespace CareHomeTest
             _context.JobTitles.AddRange(jobTitles);
             _context.SaveChanges();
             var controller = new StaffController(_context);
-            List<SelectListItem> testList = new() {
-                new SelectListItem { Text = string.Empty, Value = "-1", Selected = true },
-                new SelectListItem { Text = "foo", Value = "1" }
+            List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> testList = new() {
+                new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = string.Empty, Value = "-1", Selected = true },
+                new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = "foo", Value = "1" }
             };
 
             //Act
@@ -50,9 +49,9 @@ namespace CareHomeTest
             string json = JsonConvert.SerializeObject(response.Value);
 
             //Assert
-            Assert.IsAssignableFrom<IEnumerable<SelectListItem>>(
-                  JsonConvert.DeserializeObject<IEnumerable<SelectListItem>>(json));
-            List<SelectListItem> resultList = JsonConvert.DeserializeObject<IEnumerable<SelectListItem>>(json).ToList();
+            Assert.IsAssignableFrom<IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>>(
+                  JsonConvert.DeserializeObject<IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>>(json));
+            List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> resultList = JsonConvert.DeserializeObject<IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>>(json).ToList();
             resultList.Should().BeEquivalentTo(testList);
         }
 
